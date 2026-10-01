@@ -17,21 +17,21 @@ const ROOT = resolve(__dirname, '..');
 const DATA_DIR = resolve(ROOT, '../backend/src/main/resources/data');
 const DIST = join(ROOT, 'dist');
 const SITE = 'https://12axes.lol';
-const GOOGLE_ANALYTICS_SNIPPET = `<!-- Microsoft Clarity -->
-    <script type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "yqyqv31blm");
-    </script>
-    <!-- Google tag (gtag.js) -->
+const GOOGLE_ANALYTICS_SNIPPET = `<!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDMHT7SPDC"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-FDMHT7SPDC');
+    </script>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "yqyqv31blm");
     </script>`;
 
 const readJson = (path) => JSON.parse(readFileSync(join(DATA_DIR, path), 'utf8'));

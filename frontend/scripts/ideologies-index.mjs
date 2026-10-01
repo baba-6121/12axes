@@ -201,6 +201,7 @@ export function ideologiesIndexPage(L, { locale, site, gaSnippet, escapeHtml, pr
   const html = `<!doctype html>
 <html lang="${L.s.htmlLang}">
   <head>
+    ${gaSnippet}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#F4F1E8" />
@@ -230,7 +231,6 @@ export function ideologiesIndexPage(L, { locale, site, gaSnippet, escapeHtml, pr
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400..800&family=Poppins:wght@400;500;600&display=swap" />
     <link rel="stylesheet" href="/ideologies.css" />
     <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
-    ${gaSnippet}
   </head>
   <body>
 ${poleSprite(L.axes)}

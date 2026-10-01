@@ -121,6 +121,7 @@ export function catalogHead(L, { site, basePath, title, description, ogType, ogI
   const url = `${site}${L.s.prefix}${basePath}`;
   const ld = jsonLd.map((block) => `<script type="application/ld+json">${JSON.stringify(block)}</script>`).join('\n    ');
   return `<head>
+    ${gaSnippet}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#F4F1E8" />
@@ -150,7 +151,6 @@ export function catalogHead(L, { site, basePath, title, description, ogType, ogI
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400..800&family=Poppins:wght@400;500;600&display=swap" />
     <link rel="stylesheet" href="${css}" />
     ${ld}
-    ${gaSnippet}
   </head>`;
 }
 

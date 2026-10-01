@@ -36,7 +36,7 @@ public class OriginEnforcementFilter extends OncePerRequestFilter {
     private static final String HEALTH_PATH = "/api/health";
     private static final String API_PREFIX = "/api/";
     private static final String FORBIDDEN_BODY =
-            "{\"error\":\"forbidden\",\"message\":\"API de uso exclusivo de 12axes.vercel.app\"}";
+            "{\"error\":\"forbidden\",\"message\":\"API de uso exclusivo de 12axes.lol\"}";
 
     private final Set<String> allowedOrigins;
     private final boolean enforcementEnabled;

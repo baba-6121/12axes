@@ -16,7 +16,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const DATA_DIR = resolve(ROOT, '../backend/src/main/resources/data');
 const DIST = join(ROOT, 'dist');
-const SITE = 'https://12axes.vercel.app';
+const SITE = 'https://12axes.lol';
 const GOOGLE_ANALYTICS_SNIPPET = `<!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JF63DF6BNM"></script>
     <script>
@@ -241,10 +241,10 @@ function buildHomeVariants() {
   writeFileSync(join(DIST, 'results.html'), results);
 
   const enSeoBlock = `<!-- Primary SEO -->
-    <title>12 Axes — Political Quiz and Ideology Test across 12 Axes</title>
+    <title>Political Quiz and Ideology Test across 12 Axes | 12axes.lol</title>
     <meta
       name="description"
-      content="Discover your political position in 5 minutes with 12 Axes. A free political quiz and ideology test that maps your political spectrum — left, right, center — across 12 axes."
+      content="Try a Political Quiz and Ideology Test across 12 Axes. Explore your views on economy, liberty, culture, diplomacy, technology, and more."
     />
     <meta
       name="keywords"
@@ -254,10 +254,10 @@ function buildHomeVariants() {
     <meta name="application-name" content="12 Axes" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="language" content="English" />
-    <link rel="canonical" href="https://12axes.vercel.app/en" />
-    <link rel="alternate" hreflang="pt-BR" href="https://12axes.vercel.app/" />
-    <link rel="alternate" hreflang="en" href="https://12axes.vercel.app/en" />
-    <link rel="alternate" hreflang="x-default" href="https://12axes.vercel.app/en" />
+    <link rel="canonical" href="https://12axes.lol/en" />
+    <link rel="alternate" hreflang="pt-BR" href="https://12axes.lol/" />
+    <link rel="alternate" hreflang="en" href="https://12axes.lol/en" />
+    <link rel="alternate" hreflang="x-default" href="https://12axes.lol/en" />
 
     `;
 
@@ -265,13 +265,13 @@ function buildHomeVariants() {
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="12 Axes" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:url" content="https://12axes.vercel.app/en" />
+    <meta property="og:url" content="https://12axes.lol/en" />
     <meta property="og:title" content="12 Axes — Political Quiz and Ideology Test across 12 Axes" />
     <meta
       property="og:description"
       content="Discover your political position in 5 minutes. A free political quiz that maps your political spectrum, political ideology, and 12 axes."
     />
-    <meta property="og:image" content="https://12axes.vercel.app/logo.png" />
+    <meta property="og:image" content="https://12axes.lol/logo.png" />
     <meta property="og:image:width" content="512" />
     <meta property="og:image:height" content="512" />
     <meta property="og:image:alt" content="12 Axes logo — a 12-axis political quiz" />
@@ -285,7 +285,7 @@ function buildHomeVariants() {
       name="twitter:description"
       content="Discover your political position in 5 minutes with a free political quiz in English."
     />
-    <meta name="twitter:image" content="https://12axes.vercel.app/logo.png" />
+    <meta name="twitter:image" content="https://12axes.lol/logo.png" />
 
     `;
 
@@ -294,14 +294,14 @@ function buildHomeVariants() {
     '@type': 'WebApplication',
     name: '12 Axes',
     alternateName: ['12 Axes Political Quiz', '12 Axes Ideology Test'],
-    url: 'https://12axes.vercel.app/en',
+    url: 'https://12axes.lol/en',
     description:
       'A political quiz and ideology test that maps your political position across 12 axes and returns your political spectrum, compatible ideologies, closest country, and related personality.',
     applicationCategory: 'EducationApplication',
     operatingSystem: 'Web',
     inLanguage: 'en',
     isAccessibleForFree: true,
-    image: 'https://12axes.vercel.app/logo.png',
+    image: 'https://12axes.lol/logo.png',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     keywords:
       'political test, ideology test, political spectrum, political position, political ideology, left, right, center, liberalism, conservatism, progressivism, libertarianism, socialism, capitalism, democracy, federalism, immigration, international trade, religion in politics, economic policy, political representation, 12 axes, political quiz, elections, monarchy',

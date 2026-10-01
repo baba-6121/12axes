@@ -108,7 +108,7 @@ export function PdfReport({ result, axes, axisResults, answeredCount, religion }
         </div>
         <footer className="pf cv-f">
           <span>
-            {t.report.generatedOn(today)} · 12axes.vercel.app
+            {t.report.generatedOn(today)} · 12axes.lol
           </span>
         </footer>
       </section>
@@ -305,7 +305,7 @@ export function PdfReport({ result, axes, axisResults, answeredCount, religion }
           </div>
           <div className="close-cta">
             <b>{t.report.ctaTitle}</b>
-            <span>12axes.vercel.app</span>
+            <span>12axes.lol</span>
           </div>
         </div>
       </div>

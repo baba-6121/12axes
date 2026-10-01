@@ -284,25 +284,16 @@ interface Strings {
   shareFooterUrl: string;
   supportEyebrow: string;
   supportTitle: string;
+  supportTitleEm: string;
+  supportLead: string;
+  supportAreas: { title: string; text: string }[];
   ossEyebrow: string;
   ossTitle: string;
   ossLead: string;
   ossCards: { title: string; text: string }[];
   ossBarText: string;
-  ossGithubCta: string;
-  ossIssueCta: string;
-  supportTitleEm: string;
-  supportLead: string;
-  supportPrivacyNote: string;
-  supportCopy: string;
-  supportCopied: string;
-  supportCopyAria: (label: string) => string;
-  supportCoins: {
-    id: string;
-    name: string;
-    network: string;
-    address: string;
-  }[];
+  ossPrimaryCta: string;
+  ossSecondaryCta: string;
 }
 
 const pt: Strings = {
@@ -322,7 +313,7 @@ const pt: Strings = {
   navIdeologies: 'Ideologias',
   navPersonalities: 'Personalidades',
   navCountries: 'Países',
-  navSupport: 'Apoie',
+  navSupport: 'Perfil',
   langToggleLabel: 'EN',
   langToggleAria: 'Switch to English',
   redoQuiz: 'Refazer quiz',
@@ -555,7 +546,7 @@ const pt: Strings = {
   menuAria: 'Abrir menu',
   roseAria: 'Rosa dos 12 eixos',
   spectrumBarAria: 'Barra do espectro político com as oito categorias',
-  footerTagline: 'Quiz político independente · 12axes.vercel.app',
+  footerTagline: 'Quiz político independente · 12axes.lol',
   versionsEyebrow: 'Versões',
   versionsTitle: 'Escolha a profundidade',
   versionsLead:
@@ -700,7 +691,7 @@ const pt: Strings = {
     `${country} - ${countryPct}% de compatibilidade\n\n` +
     `👤 Personalidade mais compatível:\n` +
     `${personality} - ${personalityPct}% de compatibilidade\n\n` +
-    `👉 Faça o teste e compartilhe seu resultado:\nhttps://12axes.vercel.app/`,
+    `👉 Faça o teste e compartilhe seu resultado:\nhttps://12axes.lol/`,
   progress: (current, total) => `Pergunta ${current} de ${total}`,
   progressDone: (percent) => `${percent}% concluído`,
   archetypeHeader: 'Identificando seu arquétipo',
@@ -718,7 +709,7 @@ const pt: Strings = {
   portraitUnavailableAria: (name) => `Retrato indisponível de ${name}`,
   compatibilityAria: (pct) => `Compatibilidade: ${pct} por cento`,
   matchWord: 'match',
-  shareTitle: 'Seu perfil ideológico | 12axes.vercel.app',
+  shareTitle: 'Seu perfil ideológico | 12axes.lol',
   shareTopMatch: 'Top match',
   shareCountry: 'País mais compatível',
   sharePersonality: 'Personalidade',
@@ -728,61 +719,31 @@ const pt: Strings = {
   shareOtherPersonalities: 'OUTRAS PERSONALIDADES',
   shareNearbyCountries: 'PAÍSES PRÓXIMOS',
   shareFooterCta: 'DESCUBRA SEU PERFIL',
-  shareFooterUrl: '12AXES.VERCEL.APP',
-  supportEyebrow: 'Apoie o projeto',
-  supportTitle: '',
-  ossEyebrow: 'Código aberto',
-  ossTitle: 'Um projeto independente e transparente',
-  ossLead: 'Você não precisa confiar na nossa palavra. O código do 12 Axes é público: dá para ver como cada resposta é pontuada, como a compatibilidade é calculada e de onde vêm os perfis.',
-  ossCards: [
-    { title: 'Independente', text: 'Sem vínculo com partidos, governos ou campanhas. Ninguém paga para aparecer no seu resultado.' },
-    { title: 'Auditável', text: 'A pontuação das respostas e o cálculo de compatibilidade estão no código, sem caixa-preta.' },
-    { title: 'Verificável', text: 'Perguntas, ideologias, países e personalidades ficam em arquivos versionados, com histórico público.' },
-    { title: 'Colaborativo', text: 'Achou uma pergunta enviesada ou um perfil impreciso? Abra uma issue ou envie um pull request.' }
-  ],
-  ossBarText: 'Leia o código, audite os dados e contribua pelo GitHub.',
-  ossGithubCta: 'Ver no GitHub',
-  ossIssueCta: 'Sugerir melhoria',
-  supportTitleEm: 'Apoie',
+  shareFooterUrl: '12AXES.LOL',
+  supportEyebrow: 'LEIA SEU PERFIL',
+  supportTitle: 'O que seu perfil',
+  supportTitleEm: ' político mede',
   supportLead:
-    'O 12 Axes é independente e gratuito. Se o teste te ajudou a entender melhor sua ideologia política, considere fazer uma doação via Pix ou criptomoedas para manter o projeto no ar.',
-  supportPrivacyNote: 'Não coletamos dados. Para doar sem se identificar, use criptomoedas.',
-  supportCopy: 'Copiar',
-  supportCopied: 'Copiado!',
-  supportCopyAria: (label) => `Copiar endereço de ${label}`,
-  supportCoins: [
-    {
-      id: 'pix',
-      name: 'Pix',
-      network: 'Chave aleatória',
-      address: 'bf3e8e0b-27fe-4845-b5e2-358ca0281847'
-    },
-    {
-      id: 'btc',
-      name: 'Bitcoin',
-      network: 'On-chain',
-      address: 'bc1qsuy8r8gvl39apjykqzlgh7hku79ecarezhz2zj'
-    },
-    {
-      id: 'lightning',
-      name: 'Bitcoin',
-      network: 'Lightning',
-      address: 'lnurl1dp68gurn8ghj7ampd3kx2ar0veekzar0wd5xjtnrdakj7tnhv4kxctttdehhwm30d3h82unvwqhk2ctnw3jhymnsv96kcwfsa0gczg'
-    },
-    {
-      id: 'eth',
-      name: 'Ethereum',
-      network: 'ERC-20',
-      address: '0xDe821e55D6101AA42D05DBf2C07ad0BB866C23a5'
-    },
-    {
-      id: 'xmr',
-      name: 'Monero',
-      network: 'XMR',
-      address:
-        '85Du1EuRPkybMVXTVptC6z31dsGPpTthsiMKM3yjY7YE24BUCkyNMd9Q82kwe5CvE7BegtDTNxaG8VwYdVvTgbjDU6DpuN1'
-    }
-  ]
+    'Um quiz político é mais útil quando mostra mais do que um único rótulo entre esquerda e direita. Este perfil separa suas respostas em dimensões políticas para revelar onde suas opiniões são consistentes, misturadas ou ainda estão se formando.',
+  supportAreas: [
+    { title: 'Economia e propriedade', text: 'Serviços públicos, propriedade privada, planejamento e mercados.' },
+    { title: 'Poder e instituições', text: 'Democracia, representação, federalismo, segurança e liberdade.' },
+    { title: 'Cultura e sociedade', text: 'Imigração, religião, moralidade, identidade e mudança social.' },
+    { title: 'Visão internacional', text: 'Diplomacia, intervenção, interesses nacionais e comércio global.' },
+    { title: 'Tecnologia e futuro', text: 'Tecnologia, biologia, inovação e preservação.' }
+  ],
+  ossEyebrow: 'INTERPRETE O RESULTADO',
+  ossTitle: 'Um perfil político é mais do que um rótulo',
+  ossLead: 'Seu resultado combina pontuações em 12 dimensões políticas com perfis de comparação. Use as compatibilidades para explorar semelhanças, não como uma identidade fixa ou uma recomendação política.',
+  ossCards: [
+    { title: 'Leia os eixos primeiro', text: 'Cada pontuação mostra a força da inclinação das suas respostas em uma dimensão política.' },
+    { title: 'Compare o padrão', text: 'As compatibilidades com ideologias e perfis se baseiam em várias dimensões, não em uma única resposta.' },
+    { title: 'Observe as misturas', text: 'É normal ter posições diferentes sobre economia, cultura, poder, liberdade e política externa.' },
+    { title: 'Use o resultado como ponto de partida', text: 'Um perfil político pode ajudar você a fazer perguntas melhores e entender suas próprias opiniões.' }
+  ],
+  ossBarText: 'Explore seu perfil político em 12 dimensões e entenda como o resultado é calculado.',
+  ossPrimaryCta: 'Começar o quiz político',
+  ossSecondaryCta: 'Como a pontuação funciona',
 };
 
 const en: Strings = {
@@ -802,7 +763,7 @@ const en: Strings = {
   navIdeologies: 'Ideologies',
   navPersonalities: 'Personalities',
   navCountries: 'Countries',
-  navSupport: 'Support',
+  navSupport: 'Profile guide',
   langToggleLabel: 'PT',
   langToggleAria: 'Mudar para português',
   redoQuiz: 'Retake quiz',
@@ -1048,7 +1009,7 @@ const en: Strings = {
   menuAria: 'Open menu',
   roseAria: 'Rose of the 12 axes',
   spectrumBarAria: 'Political spectrum bar with the eight categories',
-  footerTagline: 'Independent political quiz · 12axes.vercel.app',
+  footerTagline: 'Independent political quiz · 12axes.lol',
   versionsEyebrow: 'Versions',
   versionsTitle: 'Choose the depth',
   versionsLead:
@@ -1193,7 +1154,7 @@ const en: Strings = {
     `${country} - ${countryPct}% compatibility\n\n` +
     `👤 Most compatible personality:\n` +
     `${personality} - ${personalityPct}% compatibility\n\n` +
-    `👉 Take the test and share your result:\nhttps://12axes.vercel.app/en`,
+    `👉 Take the test and share your result:\nhttps://12axes.lol/en`,
   progress: (current, total) => `Question ${current} of ${total}`,
   progressDone: (percent) => `${percent}% complete`,
   archetypeHeader: 'Identifying your archetype',
@@ -1211,7 +1172,7 @@ const en: Strings = {
   portraitUnavailableAria: (name) => `Portrait unavailable for ${name}`,
   compatibilityAria: (pct) => `Compatibility: ${pct} percent`,
   matchWord: 'match',
-  shareTitle: 'My ideological profile | 12axes.vercel.app',
+  shareTitle: 'My ideological profile | 12axes.lol',
   shareTopMatch: 'Top match',
   shareCountry: 'Most compatible country',
   sharePersonality: 'Personality',
@@ -1221,61 +1182,31 @@ const en: Strings = {
   shareOtherPersonalities: 'OTHER PERSONALITIES',
   shareNearbyCountries: 'NEARBY COUNTRIES',
   shareFooterCta: 'DISCOVER YOUR PROFILE',
-  shareFooterUrl: '12AXES.VERCEL.APP',
-  supportEyebrow: 'Support the project',
-  supportTitle: '',
-  ossEyebrow: 'Open source',
-  ossTitle: 'An independent, transparent project',
-  ossLead: "You don't have to take our word for it. The 12 Axes code is public: you can see how every answer is scored, how compatibility is calculated and where the profiles come from.",
-  ossCards: [
-    { title: 'Independent', text: 'No ties to parties, governments or campaigns. Nobody pays to appear in your result.' },
-    { title: 'Auditable', text: 'Answer scoring and the compatibility calculation live in the code, with no black box.' },
-    { title: 'Verifiable', text: 'Questions, ideologies, countries and personalities are stored in versioned files with a public history.' },
-    { title: 'Collaborative', text: 'Found a biased question or an inaccurate profile? Open an issue or send a pull request.' }
-  ],
-  ossBarText: 'Read the code, audit the data and contribute on GitHub.',
-  ossGithubCta: 'View on GitHub',
-  ossIssueCta: 'Suggest an improvement',
-  supportTitleEm: 'Support',
+  shareFooterUrl: '12AXES.LOL',
+  supportEyebrow: 'READ YOUR PROFILE',
+  supportTitle: 'What your political',
+  supportTitleEm: ' profile measures',
   supportLead:
-    '12 Axes is independent and free. If the quiz helped you better understand your political ideology, consider donating via Pix or crypto to help keep the project running.',
-  supportPrivacyNote: "We don't collect data. To donate without identifying yourself, use crypto.",
-  supportCopy: 'Copy',
-  supportCopied: 'Copied!',
-  supportCopyAria: (label) => `Copy ${label} address`,
-  supportCoins: [
-    {
-      id: 'pix',
-      name: 'Pix',
-      network: 'Random key',
-      address: 'bf3e8e0b-27fe-4845-b5e2-358ca0281847'
-    },
-    {
-      id: 'btc',
-      name: 'Bitcoin',
-      network: 'On-chain',
-      address: 'bc1qsuy8r8gvl39apjykqzlgh7hku79ecarezhz2zj'
-    },
-    {
-      id: 'lightning',
-      name: 'Bitcoin',
-      network: 'Lightning',
-      address: 'lnurl1dp68gurn8ghj7ampd3kx2ar0veekzar0wd5xjtnrdakj7tnhv4kxctttdehhwm30d3h82unvwqhk2ctnw3jhymnsv96kcwfsa0gczg'
-    },
-    {
-      id: 'eth',
-      name: 'Ethereum',
-      network: 'ERC-20',
-      address: '0xDe821e55D6101AA42D05DBf2C07ad0BB866C23a5'
-    },
-    {
-      id: 'xmr',
-      name: 'Monero',
-      network: 'XMR',
-      address:
-        '85Du1EuRPkybMVXTVptC6z31dsGPpTthsiMKM3yjY7YE24BUCkyNMd9Q82kwe5CvE7BegtDTNxaG8VwYdVvTgbjDU6DpuN1'
-    }
-  ]
+    'A political quiz is more useful when it shows more than a single left–right label. This profile separates your answers into political dimensions so you can see where your views are consistent, mixed, or still developing.',
+  supportAreas: [
+    { title: 'Economy and ownership', text: 'Public services, private property, planning, and markets.' },
+    { title: 'Power and institutions', text: 'Democracy, representation, federalism, security, and liberty.' },
+    { title: 'Culture and society', text: 'Immigration, religion, morality, identity, and social change.' },
+    { title: 'International outlook', text: 'Diplomacy, intervention, national interests, and global trade.' },
+    { title: 'Technology and the future', text: 'Technology, biology, innovation, and preservation.' }
+  ],
+  ossEyebrow: 'INTERPRETING THE RESULT',
+  ossTitle: 'A political profile is more than a label',
+  ossLead: 'Your result combines scores across 12 political dimensions with comparison profiles. Use the matches as a way to explore similarities, not as a fixed identity or political recommendation.',
+  ossCards: [
+    { title: 'Read the axes first', text: 'Each score shows how strongly your answers lean toward one side of a political dimension.' },
+    { title: 'Compare the pattern', text: 'Ideology and profile matches are based on similarities across multiple dimensions, not on one answer.' },
+    { title: 'Look for mixed views', text: 'It is normal to hold different positions on economics, culture, power, liberty, and foreign policy.' },
+    { title: 'Use the result as a starting point', text: 'A political profile can help you ask better questions and understand your own views more clearly.' }
+  ],
+  ossBarText: 'Explore your political profile across 12 dimensions and learn how the result is calculated.',
+  ossPrimaryCta: 'Start the political quiz',
+  ossSecondaryCta: 'How the scoring works',
 };
 
 export const t: Strings = LANG === 'en' ? en : pt;

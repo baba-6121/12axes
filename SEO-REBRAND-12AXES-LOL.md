@@ -52,6 +52,13 @@
 - 生产页面保留现有 `/` 和 `/en` 语言路径，避免第一阶段路由迁移风险。
 - Railway `FRONTEND_ORIGINS` 加入 `https://12axes.lol`。
 
+## 数据分析代码
+
+- Microsoft Clarity 已加入，项目 ID：`yqyqv31blm`。
+- Google Analytics 4 已配置，衡量 ID：`G-FDMHT7SPDC`。
+- 两段代码写入 `frontend/index.html`，并同步写入静态页面生成脚本，覆盖首页、语言页、结果页、目录页和详情页。
+- 已移除原先的 Google Analytics 衡量 ID，确保每个页面只保留一个 Google 代码配置。
+
 ## 验证标准
 
 - `npm test` 通过。
@@ -70,4 +77,5 @@
 - 已保留原有两块区域的整体版式节奏：画像说明区继续使用双栏结构，结果解读区继续使用四张卡片和底部 CTA 结构。
 - `npm test`：3 个测试文件、13 个测试全部通过。
 - `npm run build`：构建通过，生成 1694 个双语页面及 sitemap/robots。
+- 已检查生成的 1699 个 HTML 文件：全部包含 Clarity，全部包含新的 Google 代码，且没有旧 Google ID。
 - Logo、favicon、首屏和第 3 屏未改动。

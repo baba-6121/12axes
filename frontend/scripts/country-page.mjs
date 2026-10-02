@@ -108,6 +108,31 @@ const STR = {
   }
 };
 
+STR.es = {
+  ...STR.en,
+  skip: 'Saltar al contenido', catalogNav: 'Catálogo', homeAria: '12 axes, página de inicio', takeTheTest: 'Hacer el test',
+  currentCountry: 'País actual', historicalRegime: 'Régimen histórico', kpiSpectrum: 'Espectro predominante',
+  kpiLinked: 'Ideología vinculada', kpiClosestIdeology: 'Ideología más cercana', kpiClosestPerson: 'Personalidad más cercana',
+  portraitAlt: (name) => `Retrato de ${name}`, flagAlt: (name) => `Bandera: ${name}`, tabsAria: 'Secciones del país',
+  tabs: { axes: 'Ejes', ideologies: 'Ideologías', personalities: 'Personalidades', countries: 'Países' },
+  ids: { axes: 'ejes', ideologies: 'ideologias', personalities: 'personalidades', countries: 'paises' },
+  axesEyebrow: 'Ejes políticos', axesTitle: 'Perfil en los 12 ejes', distTitle: (name) => `Qué distingue a ${name}`,
+  rareTag: 'Posición más inusual', commonTag: 'Posición más común',
+  rareText: (pole, pct, n) => `Se inclina más hacia ${pole.toLowerCase()} que el ${pct}% de los ${n} países y regímenes del catálogo.`,
+  rareNote: (axis) => `De todos los ejes, ${axis} es donde más se aleja del conjunto.`,
+  commonText: (axis, exact) => (exact ? `En ${axis}, se sitúa prácticamente en la mediana del catálogo.` : `En ${axis}, se sitúa cerca de la mediana del catálogo.`),
+  commonNote: 'Aquí comparte terreno común con la mayoría de los países.', median: 'Mediana de los países',
+  ideologyEyebrow: 'Proximidad ideológica', ideologiesTitle: 'Ideologías', compatibleSub: (n) => `Las más compatibles entre las ${n} ideologías`,
+  distantIdeology: 'La ideología más distante', personalitiesTitle: 'Personalidades', mostCompatible: 'Más compatible',
+  byDimension: 'Más cercanas por dimensión', dimensionLabels: { political: 'Políticamente', social: 'Socialmente', economic: 'Económicamente' },
+  nearSub: 'Otros perfiles compatibles', farPeople: 'Las más distantes', countriesTitle: 'Países similares', countryTabsAria: 'Tipo de país',
+  currentTab: 'Países actuales', historicalTab: 'Regímenes históricos', currentKicker: 'País actual más similar',
+  historicalKicker: 'Régimen histórico más similar', alsoByDimension: 'También similares por dimensión', farCountries: 'Los más diferentes',
+  matchWord: 'coincidencia', ctaTitle: '¿Vivirías bien aquí?',
+  ctaText: (name, n) => `Responde el cuestionario y descubre tu compatibilidad con ${name} y otros ${n} países y regímenes en los 12 ejes.`,
+  footer: 'Cuestionario político independiente · 12axes.lol'
+};
+
 const ARR = '<svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 const pct = (x) => Math.round(x);
 

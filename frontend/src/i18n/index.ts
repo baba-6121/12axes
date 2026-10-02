@@ -1,39 +1,62 @@
-// Dicionário de UI PT/EN. O idioma é resolvido uma vez por carga de página
+// Dicionário de UI PT/EN/ES. O idioma é resolvido uma vez por carga de página
 // (?lang → localStorage → navigator) e trocar de idioma recarrega a página,
 // para que quiz e resultados sejam rebuscados já no idioma novo.
 import type { PersonalityCategory, ProfileDimension } from '../types/quiz';
+import localeConfig from './locales.json';
+import { ES_AUTO_OVERRIDES } from './es-auto';
 
-export type Lang = 'pt' | 'en';
+export type Lang = keyof typeof localeConfig;
+export const SUPPORTED_LANGS = Object.keys(localeConfig) as Lang[];
 
 const STORAGE_KEY = '12axes-lang';
 
-// Idioma forçado pelo caminho: /en sempre inglês, /br sempre português,
-// independente do aparelho ou da preferência salva.
+// Idioma forçado pelo caminho: / sempre inglês, /br português, /es espanhol
+// e /en continua como alias compatível do inglês.
 function langForcedByPath(pathname: string): Lang | null {
   const path = (pathname.replace(/\.html$/, '').replace(/\/+$/, '') || '/');
-  if (path === '/en') return 'en';
-  if (path === '/br') return 'pt';
+  if (path === '/' || path === '/en' || path.startsWith('/en/')) return 'en';
+  if (path === '/br' || path.startsWith('/br/')) return 'pt';
+  if (path === '/es' || path.startsWith('/es/')) return 'es';
   return null;
+}
+
+function langPrefix(lang: Lang): string {
+  return localeConfig[lang].pathPrefix;
+}
+
+function routeSuffix(pathname: string): string {
+  let path = pathname.replace(/\.html$/, '').replace(/\/+$/, '') || '/';
+  for (const prefix of ['/en', '/br', '/es']) {
+    if (path === prefix) return '/';
+    if (path.startsWith(`${prefix}/`)) return path.slice(prefix.length) || '/';
+  }
+  return path;
+}
+
+export function localizedPath(lang: Lang, pathname = typeof window === 'undefined' ? '/' : window.location.pathname): string {
+  const suffix = routeSuffix(pathname);
+  const prefix = langPrefix(lang);
+  return prefix ? `${prefix}${suffix === '/' ? '' : suffix}` : suffix;
 }
 
 export function resolveLang(): Lang {
   if (typeof window === 'undefined') {
-    return 'pt';
+    return 'en';
   }
   const forced = langForcedByPath(window.location.pathname);
   if (forced) {
     return forced;
   }
   const fromUrl = new URLSearchParams(window.location.search).get('lang');
-  if (fromUrl === 'pt' || fromUrl === 'en') {
+  if (fromUrl === 'pt' || fromUrl === 'en' || fromUrl === 'es') {
     window.localStorage.setItem(STORAGE_KEY, fromUrl);
-    return fromUrl;
+    return fromUrl as Lang;
   }
   const stored = window.localStorage.getItem(STORAGE_KEY);
-  if (stored === 'pt' || stored === 'en') {
-    return stored;
+  if (stored === 'pt' || stored === 'en' || stored === 'es') {
+    return stored as Lang;
   }
-  return navigator.language?.toLowerCase().startsWith('pt') ? 'pt' : 'en';
+  return 'en';
 }
 
 export const LANG: Lang = resolveLang();
@@ -42,10 +65,9 @@ export function setLang(lang: Lang) {
   window.localStorage.setItem(STORAGE_KEY, lang);
   const url = new URL(window.location.href);
   url.searchParams.delete('lang');
-  // Em /en ou /br a URL é o que define o idioma, então o toggle troca de rota.
-  if (langForcedByPath(url.pathname)) {
-    url.pathname = lang === 'en' ? '/en' : '/br';
-  }
+  // A rota define o idioma. Trocar de idioma conserva a página atual e muda
+  // apenas o prefixo: /ideologies/x -> /es/ideologies/x.
+  url.pathname = localizedPath(lang, url.pathname);
   window.location.href = url.toString();
 }
 
@@ -1209,4 +1231,163 @@ const en: Strings = {
   ossSecondaryCta: 'How the scoring works',
 };
 
-export const t: Strings = LANG === 'en' ? en : pt;
+// Spanish is a first-class locale. The shared dictionary keeps every UI key
+// present, while the reviewed Spanish overrides below take precedence over
+// the machine-assisted fallback resource. Future locales only need another
+// registry entry, dictionary, and data overlay.
+function mergeLocale(base: any, override: any): any {
+  if (Array.isArray(override)) return override;
+  if (override && typeof override === 'object') {
+    const merged = { ...(base ?? {}) };
+    for (const [key, value] of Object.entries(override)) {
+      merged[key] = mergeLocale(merged[key], value);
+    }
+    return merged;
+  }
+  return override;
+}
+
+const es: Strings = {
+  ...mergeLocale(en, ES_AUTO_OVERRIDES),
+  htmlLang: 'es',
+  docTitle: 'Political Quiz and Ideology Test across 12 Axes | 12axes.lol',
+  loadingAnalysis: 'Analizando tu perfil…',
+  loadingQuiz: 'Cargando el quiz político…',
+  loadingResult: 'Calculando tu resultado…',
+  tryAgain: 'Intentar de nuevo',
+  skipToContent: 'Saltar al contenido',
+  mainNavAria: 'Navegación principal',
+  navHow: 'Cómo funciona',
+  navAxes: '12 ejes',
+  navSpectrum: 'Espectro',
+  navFaq: 'Preguntas frecuentes',
+  navIdeologies: 'Ideologías',
+  navPersonalities: 'Personalidades',
+  navCountries: 'Países',
+  navSupport: 'Perfil',
+  langToggleLabel: 'ES',
+  langToggleAria: 'Cambiar idioma',
+  redoQuiz: 'Repetir el quiz',
+  restartQuiz: 'Reiniciar el quiz',
+  heroEyebrow: 'QUIZ POLÍTICO Y TEST IDEOLÓGICO',
+  introLead: 'Descubre tu posición política en 12 dimensiones y compara tu perfil con ideologías, países y personalidades.',
+  startQuiz: 'Empezar el quiz',
+  seeAxes: 'Ver los 12 ejes',
+  heroTeaserLabel: 'Tu perfil político',
+  heroTeaserTag: '12 dimensiones',
+  axisInfoAria: (label) => `Más información sobre ${label}`,
+  closeLabel: 'Cerrar',
+  personalityInfoAria: (name) => `Más información sobre ${name}`,
+  closenessTitle: 'Compatibilidad',
+  closenessYou: 'Tú',
+  howEyebrow: 'CÓMO FUNCIONA',
+  howTitle: 'Una lectura más amplia de tus opiniones',
+  howLead: 'El quiz distribuye tus respuestas en 12 ejes políticos para mostrar patrones, matices y combinaciones de ideas.',
+  axesGuideEyebrow: 'LOS 12 EJES',
+  discoveryEyebrow: 'DESCUBRE TU PERFIL',
+  exampleEyebrow: 'EJEMPLO DE RESULTADO',
+  exampleCta: 'Explorar este resultado',
+  spectrumEyebrow: 'ESPECTRO POLÍTICO',
+  faqTitle: 'Preguntas frecuentes',
+  faqLead: 'Respuestas sobre el quiz político, el cálculo y la interpretación del resultado.',
+  navStart: 'Empezar',
+  menuAria: 'Abrir menú',
+  backToStart: 'Volver al inicio',
+  depthLabel: 'Profundidad',
+  recommended: 'Recomendado',
+  back: 'Atrás',
+  next: 'Siguiente',
+  calculating: 'Calculando…',
+  seeResult: 'Ver resultado',
+  archetypeSkip: 'Omitir',
+  errMissingAnswer: 'Aún debes responder esta pregunta antes de ver el resultado.',
+  errLoadQuiz: 'No se pudo cargar el quiz.',
+  errCalc: 'No se pudo calcular el resultado.',
+  errImage: 'No se pudo generar la imagen del resultado.',
+  errHttp: (status) => `Error HTTP ${status}`,
+  resultsEyebrow: 'Análisis completo',
+  resultsH1Pre: 'Tu perfil ',
+  resultsH1Em: 'ideológico',
+  resultsLead: (count) => `Análisis basado en ${count} respuestas distribuidas en 12 dimensiones fundamentales de la ideología política.`,
+  resultsLeadShared: 'Resultado compartido: tu posición en los 12 ejes políticos y las compatibilidades calculadas a partir de ella.',
+  resultsSummaryAria: 'Resumen del análisis',
+  metaAnswered: 'Preguntas respondidas',
+  metaAxes: 'Ejes analizados',
+  metaTop: 'Mayor compatibilidad',
+  axesSectionEyebrow: 'Ejes políticos',
+  axesSectionTitle: 'Resultado porcentual por eje',
+  proximityEyebrow: 'Proximidad ideológica',
+  otherMatches: 'Otras compatibilidades',
+  countriesSectionTitle: 'Países más cercanos a ti',
+  countryCurrentTab: 'Actuales',
+  countryHistoricalTab: 'Históricos',
+  countriesDistantTitle: 'Más alejados de ti',
+  personalitiesSectionTitle: 'Personalidades más cercanas a ti',
+  booksEyebrow: 'Para profundizar',
+  booksTitle: 'Lecturas recomendadas',
+  booksCta: 'Ver en Amazon',
+  redoAnalysis: 'Repetir el análisis',
+  share: 'Compartir',
+  saveOrShare: 'Compartir resultado',
+  generatingPng: 'Generando PNG…',
+  generatingPdf: 'Generando PDF…',
+  downloadPdf: 'Descargar PDF',
+  shareTitle: 'Mi perfil ideológico | 12axes.lol',
+  shareTopMatch: 'Mayor compatibilidad',
+  shareCountry: 'País más compatible',
+  sharePersonality: 'Personalidad',
+  shareResultLabel: 'MI RESULTADO',
+  shareMostCompatible: 'MAYOR COMPATIBILIDAD',
+  shareYourAxes: 'TUS 12 EJES',
+  shareOtherPersonalities: 'OTRAS PERSONALIDADES',
+  shareNearbyCountries: 'PAÍSES CERCANOS',
+  shareFooterCta: 'DESCUBRE TU PERFIL',
+  shareFooterUrl: '12AXES.LOL',
+  axisExplanations: {
+    estrutura: 'Mide si prefieres distribuir el poder entre estados, ciudades y comunidades locales o un Estado nacional unitario con leyes y dirección más uniformes.',
+    representacao: 'Compara la confianza en las elecciones, la oposición y las instituciones democráticas con la preferencia por un liderazgo fuerte, la tecnocracia, la monarquía o regímenes autoritarios.',
+    poder: 'Evalúa el equilibrio entre orden, vigilancia, castigo y control estatal frente a la privacidad, la libertad individual y la autonomía civil.',
+    imigracao: 'Observa si valoras la asimilación cultural, el idioma y la identidad nacional o el multiculturalismo, la migración abierta y la pluralidad de costumbres.',
+    diplomacia: 'Analiza tu posición sobre fuerzas armadas, armas, disuasión e intervención militar frente a la negociación, el pacifismo y las organizaciones internacionales.',
+    intervencao: 'Mide la inclinación entre el no intervencionismo exterior y una soberanía nacional más activa, el nacionalismo geopolítico y la defensa de los intereses nacionales.',
+    economia: 'Compara la preferencia por la propiedad pública, las empresas estatales y los servicios colectivos con la propiedad privada, la privatización y el liderazgo empresarial.',
+    controle: 'Evalúa la planificación estatal, la regulación y la política económica activa frente a los mercados libres, la baja intervención y la competencia.',
+    comercio: 'Mide el proteccionismo, la soberanía productiva y la defensa de la industria nacional frente al globalismo, el libre comercio y la integración económica internacional.',
+    religiao: 'Compara el laicismo, la separación entre religión y Estado y la crítica a los privilegios religiosos con la influencia pública de la fe y los valores religiosos.',
+    moral: 'Evalúa el progresismo cultural, los derechos civiles y el cambio social frente a la tradición, la familia, las costumbres y el conservadurismo moral.',
+    tecnologia: 'Mide el entusiasmo por la tecnología, la inteligencia artificial, la ingeniería genética y el desarrollo técnico frente a la cautela biológica, ambiental y preservacionista.'
+  },
+  supportEyebrow: 'LEE TU PERFIL',
+  supportTitle: 'Qué mide tu perfil ',
+  supportTitleEm: 'político',
+  ossEyebrow: 'INTERPRETA EL RESULTADO',
+  ossTitle: 'Un perfil político es más que una etiqueta',
+  ossLead: 'Tu resultado combina puntuaciones en 12 dimensiones políticas con perfiles de comparación. Úsalo para explorar similitudes, no como una identidad fija.',
+  ossPrimaryCta: 'Empezar el quiz político',
+  ossSecondaryCta: 'Cómo funciona la puntuación',
+  progress: (current, total) => `Pregunta ${current} de ${total}`,
+  progressDone: (percent) => `${percent}% completado`,
+  archetypeHeader: 'Identificando tu arquetipo',
+  archetypeStep: (current, total) => `${current} de ${total}`,
+  progressAria: (percent) => `Progreso del quiz: ${percent}%`,
+  answersAria: 'Opciones de respuesta',
+  countryKicker: 'País más compatible',
+  flagLabel: 'Bandera',
+  flagHistoricLabel: 'Bandera o símbolo histórico',
+  flagAlt: (label, name) => `${label} de ${name}`,
+  flagUnavailable: 'Bandera no disponible',
+  flagUnavailableAria: (name) => `Bandera no disponible para ${name}`,
+  personalityKicker: 'Personalidad más compatible',
+  portraitAlt: (name) => `Retrato de ${name}`,
+  portraitUnavailableAria: (name) => `Retrato no disponible de ${name}`,
+  compatibilityAria: (pct) => `Compatibilidad: ${pct} por ciento`,
+  matchWord: 'compatibilidad',
+  shareMessage: (ideology, ideologyPct, country, countryPct, personality, personalityPct) =>
+    `Descubrí mi perfil ideológico en el Political Quiz de 12 Axes.\n\n` +
+    `Ideología más compatible: ${ideology} (${ideologyPct}%)\n` +
+    `País más compatible: ${country} (${countryPct}%)\n` +
+    `Personalidad más compatible: ${personality} (${personalityPct}%)\n\n` +
+    `Haz el test: https://12axes.lol/`
+};
+
+export const t: Strings = LANG === 'en' ? en : LANG === 'es' ? es : pt;

@@ -3,6 +3,7 @@
 // Reaproveita o CSS do catálogo de ideologias e soma os estilos do card com foto.
 import { ARROW, IDEOLOGIES_CSS, dna, dnaLegend } from './ideologies-index.mjs';
 import { poleSprite } from './pole-icons.mjs';
+import { hreflangLinks } from './locale-config.mjs';
 
 // Ordem das áreas no catálogo (a mesma do mockup de docs/).
 export const AREA_ORDER = ['politico', 'teorico', 'filosofo', 'economista', 'intelectual', 'ativista', 'religioso', 'empresario'];
@@ -57,7 +58,7 @@ const STR = {
     ctaText: (n) => `Responda ao quiz e descubra quais destas ${n} personalidades pensam mais como você.`,
     takeTheTest: 'Fazer o teste',
     footer: 'Quiz político independente · 12axes.lol',
-    otherLang: { label: 'English', href: '/en/personalities' },
+    otherLang: { label: 'English', href: '/personalities' },
     descriptions: {
       politico: 'Chefes de Estado, parlamentares, revolucionários e líderes partidários que exerceram o poder ou disputaram-no.',
       teorico: 'Autores que formularam doutrinas, programas e conceitos que orientam movimentos e governos.',
@@ -109,6 +110,49 @@ const STR = {
   }
 };
 
+AREA_LABELS.es = {
+  politico: 'Política', religioso: 'Religión', economista: 'Economía', filosofo: 'Filosofía',
+  teorico: 'Teoría política', empresario: 'Empresa', intelectual: 'Vida intelectual', ativista: 'Activismo'
+};
+STR.es = {
+  ...STR.en,
+  skip: 'Saltar a la lista',
+  catalogNav: 'Catálogo',
+  homeAria: '12 axes, página de inicio',
+  eyebrow: 'Catálogo',
+  lead: (n) => `${n} líderes, pensadores, economistas y activistas mapeados por 12 Axes, organizados por área. Cada uno tiene una foto, una biografía breve y un perfil completo en los 12 ejes.`,
+  stats: ['personalidades', 'áreas de actuación', 'ejes por perfil'],
+  areasAria: 'Áreas de actuación',
+  searchLabel: 'Buscar personalidad',
+  searchPlaceholder: 'Buscar nombre, cargo o época',
+  filterAria: 'Filtrar por área de actuación',
+  count: ['personalidad', 'personalidades'],
+  viewProfile: 'Ver perfil',
+  dnaNote: '<b>Cómo leer la franja de 12 iconos:</b> cada icono es un eje y muestra el polo hacia el que se inclina la persona. Cuanto más intenso es el icono, más marcada es la posición. Pasa el cursor para ver los valores.',
+  legendAria: 'Polos de cada eje, en el orden de la franja',
+  emptyTitle: 'No se encontró ninguna personalidad',
+  emptyText: 'Prueba con otro término o borra los filtros.',
+  found: ['personalidad encontrada', 'personalidades encontradas'],
+  clear: 'Borrar filtros',
+  credit: 'Retratos: Wikimedia Commons / Wikipedia, según la fuente indicada en cada perfil.',
+  portraitAlt: (name) => `Retrato de ${name}`,
+  ctaTitle: '¿A quién te pareces más?',
+  ctaText: (n) => `Responde el cuestionario y descubre cuáles de estas ${n} personalidades piensan más como tú.`,
+  takeTheTest: 'Hacer el test',
+  footer: 'Cuestionario político independiente · 12axes.lol',
+  otherLang: { label: 'Português', href: '/br/personalities' },
+  descriptions: {
+    politico: 'Jefes de Estado, parlamentarios, revolucionarios y líderes de partidos que ejercieron el poder o lucharon por él.',
+    teorico: 'Autores que formularon doctrinas, programas y conceptos que orientan movimientos y gobiernos.',
+    filosofo: 'Pensadores que debatieron sobre justicia, libertad, autoridad y la naturaleza del Estado.',
+    economista: 'Economistas cuyas ideas moldearon la política monetaria y fiscal y el debate entre mercado y Estado.',
+    intelectual: 'Escritores, historiadores, periodistas y académicos que influyeron en el debate público.',
+    ativista: 'Militantes y líderes de movimientos sociales, derechos civiles, sindicatos y causas específicas.',
+    religioso: 'Líderes y pensadores religiosos con influencia directa en la vida política y moral.',
+    empresario: 'Emprendedores y ejecutivos con una actuación o influencia relevante en la política.'
+  }
+};
+
 export function initials(name) {
   const words = name.replace(/[.,]/g, '').split(/\s+/).filter((w) => /^\p{Lu}/u.test(w));
   if (words.length === 0) return name.slice(0, 1).toUpperCase();
@@ -129,9 +173,7 @@ export function catalogHead(L, { site, basePath, title, description, ogType, ogI
     <meta name="description" content="${escapeHtml(description)}" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="${url}" />
-    <link rel="alternate" hreflang="pt-BR" href="${site}${basePath}" />
-    <link rel="alternate" hreflang="en" href="${site}/en${basePath}" />
-    <link rel="alternate" hreflang="x-default" href="${site}/en${basePath}" />
+${hreflangLinks(site, basePath)}
     <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

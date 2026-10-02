@@ -103,6 +103,30 @@ const STR = {
   }
 };
 
+STR.es = {
+  ...STR.en,
+  skip: 'Saltar al contenido', catalogNav: 'Catálogo', homeAria: '12 axes, página de inicio', takeTheTest: 'Hacer el test',
+  kpiSpectrum: 'Espectro más cercano', kpiAssociated: 'Ideología asociada', kpiClosestIdeology: 'Ideología más cercana', kpiClosestPerson: 'Personalidad más cercana',
+  portraitAlt: (name) => `Retrato de ${name}`, flagAlt: (name) => `Bandera: ${name}`, tabsAria: 'Secciones del perfil',
+  tabs: { axes: 'Ejes', ideologies: 'Ideologías', personalities: 'Personalidades', countries: 'Países' },
+  ids: { axes: 'ejes', ideologies: 'ideologias', personalities: 'personalidades', countries: 'paises' },
+  axesEyebrow: 'Ejes políticos', axesTitle: 'Perfil en los 12 ejes', distTitle: (name) => `Qué distingue a ${name}`,
+  rareTag: 'Posición más inusual', commonTag: 'Posición más común',
+  rareText: (name, pole, pct, n) => `${name} se inclina más hacia ${pole.toLowerCase()} que el ${pct}% de las ${n} personalidades del catálogo.`,
+  rareNote: (axis, name) => `De todos los ejes, ${axis} es donde ${name} más se aleja del conjunto.`,
+  commonText: (axis, name, exact) => (exact ? `En ${axis}, ${name} se sitúa prácticamente en la mediana del catálogo.` : `En ${axis}, ${name} se sitúa cerca de la mediana del catálogo.`),
+  commonNote: 'Aquí comparte terreno común con la mayoría de las personalidades.', median: 'Mediana de las personalidades',
+  ideologyEyebrow: 'Proximidad ideológica', ideologyTitle: (name) => `Ideologías de ${name}`,
+  closestIdeologies: (n) => `Las más cercanas entre las ${n} ideologías`, distantIdeology: 'La ideología más distante', matchWord: 'coincidencia',
+  personalitiesTitle: 'Personalidades más cercanas', mostCompatible: 'Más compatible', alsoByDimension: 'También cercanas por dimensión',
+  dimensionLabels: { political: 'Políticamente', social: 'Socialmente', economic: 'Económicamente' }, nearSub: 'Otros perfiles similares',
+  farSub: (name) => `Las más distantes de ${name}`, countriesTitle: 'Países más cercanos', countryTabsAria: 'Tipo de país',
+  currentTab: 'País actual', historicalTab: 'Experiencia histórica', currentKicker: 'País más compatible',
+  historicalKicker: 'Experiencia histórica más compatible', ctaTitle: '¿Y tú, a quién te pareces?',
+  ctaText: (name) => `Responde el cuestionario y descubre tu compatibilidad con ${name}, ideologías, países y otras personalidades en los 12 ejes.`,
+  footer: 'Cuestionario político independiente · 12axes.lol'
+};
+
 const ARR = '<svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>';
 const pct = (x) => Math.round(x);
 
@@ -163,7 +187,8 @@ const INFO_ICON = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="
 const BALANCED_COLOR = '#9C988C';
 const AXIS_INFO = {
   pt: { aria: (label) => `O que significa o eixo ${label}?`, close: 'Fechar' },
-  en: { aria: (label) => `What does the ${label} axis mean?`, close: 'Close' }
+  en: { aria: (label) => `What does the ${label} axis mean?`, close: 'Close' },
+  es: { aria: (label) => `¿Qué significa el eje ${label}?`, close: 'Cerrar' }
 };
 
 // Barras dos 12 eixos, iguais às da tela de resultados (AxesSection.tsx):

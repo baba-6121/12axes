@@ -11,6 +11,8 @@ import { personalityPage, PROFILE_CSS } from './personality-page.mjs';
 import { ideologyPage } from './ideology-page.mjs';
 import { countryPage, COUNTRY_PAGE_CSS } from './country-page.mjs';
 import { countriesIndexPage, COUNTRIES_CSS } from './countries-index.mjs';
+import { LOCALE_CONFIG, LOCALES, hreflangLinks, localePrefix } from './locale-config.mjs';
+import { localizeCatalogDates } from './locale-format.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -44,17 +46,20 @@ const ideologyProfiles = new Map(readJson('ideology-profiles.json').map((p) => [
 const countryProfiles = new Map(readJson('countries-profiles.json').map((p) => [p.countryId, p.vector]));
 const personalityProfiles = new Map(readJson('personality-profiles.json').map((p) => [p.personalityId, p.vector]));
 
-function overlay(base, locale, file) {
+function overlay(base, locale, file, fallback = base) {
   if (locale === 'pt') return base;
   const path = join(DATA_DIR, 'i18n', locale, file);
   if (!existsSync(path)) {
-    console.warn(`[i18n] overlay ausente: ${locale}/${file} — usando PT`);
-    return base;
+    if (locale === 'es') {
+      return fallback;
+    }
+    console.warn(`[i18n] overlay ausente: ${locale}/${file} — usando fallback`);
+    return fallback;
   }
   const byId = new Map(JSON.parse(readFileSync(path, 'utf8')).map((item) => [item.id, item]));
-  return base.map((item) => {
+  return fallback.map((item) => {
     const tr = byId.get(item.id);
-    if (!tr) console.warn(`[i18n] sem tradução ${locale}: ${file} → ${item.id} (fallback PT)`);
+    if (!tr && locale !== 'es') console.warn(`[i18n] sem tradução ${locale}: ${file} → ${item.id} (fallback)`);
     return tr ? { ...item, ...tr } : item;
   });
 }
@@ -63,7 +68,7 @@ const STR = {
   pt: {
     htmlLang: 'pt-BR',
     ogLocale: 'pt_BR',
-    prefix: '',
+    prefix: '/br',
     home: 'Início',
     navIdeologies: 'Ideologias',
     navCountries: 'Países',
@@ -98,7 +103,7 @@ const STR = {
   en: {
     htmlLang: 'en',
     ogLocale: 'en_US',
-    prefix: '/en',
+    prefix: '',
     home: 'Home',
     navIdeologies: 'Ideologies',
     navCountries: 'Countries',
@@ -132,7 +137,42 @@ const STR = {
   }
 };
 
-const LOCALES = ['pt', 'en'];
+STR.es = {
+  ...STR.en,
+  htmlLang: 'es',
+  ogLocale: 'es_ES',
+  prefix: '/es',
+  home: 'Inicio',
+  navIdeologies: 'Ideologías',
+  navCountries: 'Países',
+  navPersonalities: 'Personalidades',
+  takeTheTest: 'Hacer el test',
+  axesTitle: 'Perfil en los 12 ejes',
+  ctaTitle: '¿Dónde te sitúas en el espectro político?',
+  ctaText: 'Haz el quiz y descubre tu compatibilidad con ideologías, países y personalidades en los 12 ejes.',
+  currentCountry: 'País actual',
+  historicalRegime: (period) => `Régimen histórico${period ? ` · ${period}` : ''}`,
+  flagAlt: (name) => `Bandera: ${name}`,
+  imageSource: 'Fuente de la imagen',
+  homeAria: '12 Axes — página de inicio',
+  balanced: 'Equilibrado',
+  intensity: ['Equilibrado', 'Tendencia', 'Fuerte', 'Muy fuerte'],
+  subjectPrefix: (name) => name,
+  ideologyTitle: (name) => `${name} — qué es y su posición en los 12 ejes políticos | 12 Axes`,
+  countryTitle: (name) => `${name} — perfil político en los 12 ejes | 12 Axes`,
+  personalityTitle: (name) => `${name} — posición política en los 12 ejes | 12 Axes`,
+  ideologyHeadline: (name) => `${name} — posición política en los 12 ejes`,
+  countryHeadline: (name) => `${name} — perfil político en los 12 ejes`,
+  ideologiesIndexTitle: (n) => `Ideologías políticas: lista completa de ${n} corrientes | 12 Axes`,
+  ideologiesIndexDesc: (n) => `Explora ${n} ideologías políticas con descripciones y posiciones en 12 ejes. Descubre la tuya con el quiz político de 12 Axes.`,
+  ideologiesIndexHeading: 'Ideologías políticas',
+  countriesIndexTitle: (n) => `Perfiles políticos de ${n} países y regímenes históricos | 12 Axes`,
+  countriesIndexDesc: (n) => `Compara el perfil político de ${n} países y regímenes históricos en 12 ejes. Descubre el país más compatible contigo.`,
+  countriesIndexHeading: 'Países y regímenes',
+  personalitiesIndexTitle: (n) => `${n} personalidades políticas y sus posiciones | 12 Axes`,
+  personalitiesIndexDesc: (n) => `Consulta la posición política de ${n} personalidades históricas y contemporáneas en 12 ejes.`,
+  personalitiesIndexHeading: 'Personalidades políticas'
+};
 
 function groupBy(list, keyFn) {
   const map = new Map();
@@ -195,13 +235,19 @@ function buildIndexes(L) {
 
 // ── Montagem por locale ─────────────────────────────────────────────────────
 function buildLocaleContext(locale) {
-  const ideologies = overlay(baseIdeologies, locale, 'ideologies.json');
-  const countries = overlay(baseCountries, locale, 'countries.json');
-  const personalities = overlay(basePersonalities, locale, 'personalities.json');
+  const englishIdeologies = overlay(baseIdeologies, 'en', 'ideologies.json');
+  const englishCountries = overlay(baseCountries, 'en', 'countries.json');
+  const englishPersonalities = overlay(basePersonalities, 'en', 'personalities.json');
+  const fallbackIdeologies = locale === 'es' ? englishIdeologies : baseIdeologies;
+  const fallbackCountries = locale === 'es' ? englishCountries : baseCountries;
+  const fallbackPersonalities = locale === 'es' ? englishPersonalities : basePersonalities;
+  const ideologies = overlay(baseIdeologies, locale, 'ideologies.json', fallbackIdeologies);
+  const countries = localizeCatalogDates(overlay(baseCountries, locale, 'countries.json', fallbackCountries), locale);
+  const personalities = localizeCatalogDates(overlay(basePersonalities, locale, 'personalities.json', fallbackPersonalities), locale);
   return {
     locale,
-    s: STR[locale],
-    axes: overlay(baseAxes, locale, 'axes.json'),
+    s: { ...STR[locale], prefix: localePrefix(locale) },
+    axes: overlay(baseAxes, locale, 'axes.json', locale === 'es' ? overlay(baseAxes, 'en', 'axes.json') : baseAxes),
     ideologies,
     countries,
     personalities,
@@ -219,12 +265,9 @@ function writePage(prefix, { basePath, html }) {
   return prefix + basePath;
 }
 
-// ── Homes /en e /br ─────────────────────────────────────────────────────────
-// dist/en.html: cópia do index compilado com todo o SEO trocado para inglês
-// (título, description, OG, JSON-LD) e canonical próprio — é o que o Google
-// mostra para quem busca em inglês. dist/br.html: cópia fiel do index (o
-// canonical continua apontando para /, então não cria conteúdo duplicado);
-// o idioma forçado em ambos vem do caminho, resolvido pelo app.
+// ── Homes /, /br, /es e /en ─────────────────────────────────────────────────
+// A raiz é a versão inglesa. /br e /es são versões explícitas; /en continua
+// como alias compatível e usa a raiz como canonical.
 function replaceBetween(html, startMarker, endMarker, replacement) {
   const start = html.indexOf(startMarker);
   const end = html.indexOf(endMarker, start);
@@ -236,8 +279,6 @@ function replaceBetween(html, startMarker, endMarker, replacement) {
 
 function buildHomeVariants() {
   const index = readFileSync(join(DIST, 'index.html'), 'utf8');
-
-  writeFileSync(join(DIST, 'br.html'), index);
 
   // Rotas do app servidas como arquivos físicos (via cleanUrls), sem depender
   // do rewrite de SPA. results.html fica sem canonical/hreflang para que cada
@@ -262,10 +303,8 @@ function buildHomeVariants() {
     <meta name="application-name" content="12 Axes" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="language" content="English" />
-    <link rel="canonical" href="https://12axes.lol/en" />
-    <link rel="alternate" hreflang="pt-BR" href="https://12axes.lol/" />
-    <link rel="alternate" hreflang="en" href="https://12axes.lol/en" />
-    <link rel="alternate" hreflang="x-default" href="https://12axes.lol/en" />
+    <link rel="canonical" href="https://12axes.lol/" />
+${hreflangLinks(SITE, '/')}
 
     `;
 
@@ -273,7 +312,7 @@ function buildHomeVariants() {
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="12 Axes" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:url" content="https://12axes.lol/en" />
+    <meta property="og:url" content="https://12axes.lol/" />
     <meta property="og:title" content="12 Axes — Political Quiz and Ideology Test across 12 Axes" />
     <meta
       property="og:description"
@@ -302,7 +341,7 @@ function buildHomeVariants() {
     '@type': 'WebApplication',
     name: '12 Axes',
     alternateName: ['12 Axes Political Quiz', '12 Axes Ideology Test'],
-    url: 'https://12axes.lol/en',
+    url: 'https://12axes.lol/',
     description:
       'A political quiz and ideology test that maps your political position across 12 axes and returns your political spectrum, compatible ideologies, closest country, and related personality.',
     applicationCategory: 'EducationApplication',
@@ -360,7 +399,7 @@ function buildHomeVariants() {
 
   const enJsonLdBlocks = [JSON.stringify(enWebApp), JSON.stringify(enFaq)];
 
-  let en = index.replace('<html lang="pt-BR">', '<html lang="en">');
+  let en = index.replace(/<html lang="[^"]+">/, '<html lang="en">');
   en = replaceBetween(en, '<!-- Primary SEO -->', '<!-- Icons -->', enSeoBlock);
   en = replaceBetween(en, '<!-- Open Graph -->', '<!-- Twitter -->', enOgBlock);
   en = replaceBetween(en, '<!-- Twitter -->', '<style>', enTwitterBlock);
@@ -375,7 +414,41 @@ function buildHomeVariants() {
   if (ldIndex !== enJsonLdBlocks.length) {
     throw new Error(`Esperava 2 blocos ld+json no index.html, encontrei ${ldIndex}`);
   }
+  // / is the canonical English entry point. Keep /en for old links.
+  writeFileSync(join(DIST, 'index.html'), en);
   writeFileSync(join(DIST, 'en.html'), en);
+
+  const br = index
+    .replace(/<html lang="[^"]+">/, '<html lang="pt-BR">')
+    .replace(/<title>[^<]+<\/title>/, '<title>Quiz político e teste ideológico em 12 eixos | 12axes.lol</title>')
+    .replace(/<meta\n\s+name="description"\n\s+content="[^"]+"\n\s+\/>/, '<meta name="description" content="Descubra sua posição política em 5 minutos com um quiz político e teste ideológico gratuito em 12 eixos." />')
+    .replace(/<meta name="language" content="[^"]+" \/>/, '<meta name="language" content="Portuguese" />')
+    .replace(/<link rel="canonical" href="[^"]+" \/>/, '<link rel="canonical" href="https://12axes.lol/br" />')
+    .replace(/<link rel="alternate" hreflang=[^\n]+\n/g, '');
+  const brLocalized = br
+    .replace(/<meta property="og:locale" content="[^"]+" \/>/, '<meta property="og:locale" content="pt_BR" />')
+    .replace(/<meta property="og:url" content="[^"]+" \/>/, '<meta property="og:url" content="https://12axes.lol/br" />')
+    .replace(/<meta property="og:title" content="[^"]+" \/>/, '<meta property="og:title" content="12 Axes — Quiz político e teste ideológico em 12 eixos" />')
+    .replace(/<meta name="twitter:title" content="[^"]+" \/>/, '<meta name="twitter:title" content="12 Axes — Quiz político e teste ideológico em 12 eixos" />')
+    .replace(/"url"\s*:\s*"https:\/\/12axes\.lol\//g, '"url":"https://12axes.lol/br');
+  const brHeadLinks = hreflangLinks(SITE, '/');
+  writeFileSync(join(DIST, 'br.html'), brLocalized.replace('</head>', `${brHeadLinks}\n  </head>`));
+
+  const es = en
+    .replace(/<html lang="[^"]+">/, '<html lang="es">')
+    .replace(/<title>[^<]+<\/title>/, '<title>Political Quiz and Ideology Test across 12 Axes en español | 12axes.lol</title>')
+    .replace(/<meta\n\s+name="description"\n\s+content="[^"]+"\n\s+\/>/, '<meta name="description" content="Haz un Political Quiz and Ideology Test across 12 Axes y explora tus opiniones sobre economía, libertad, cultura, diplomacia y tecnología." />')
+    .replace(/<meta name="language" content="[^"]+" \/>/, '<meta name="language" content="Spanish" />')
+    .replace(/<link rel="canonical" href="[^"]+" \/>/, '<link rel="canonical" href="https://12axes.lol/es" />')
+    .replace(/<link rel="alternate" hreflang=[^\n]+\n/g, '')
+    .replace(/<meta property="og:locale" content="[^"]+" \/>/, '<meta property="og:locale" content="es_ES" />')
+    .replace(/<meta property="og:url" content="[^"]+" \/>/, '<meta property="og:url" content="https://12axes.lol/es" />')
+    .replace(/<meta property="og:title" content="[^"]+" \/>/, '<meta property="og:title" content="12 Axes — Political Quiz and Ideology Test across 12 Axes" />')
+    .replace(/<meta name="twitter:title" content="[^"]+" \/>/, '<meta name="twitter:title" content="12 Axes — Political Quiz and Ideology Test across 12 Axes" />')
+    .replace(/<meta\n\s+name="twitter:description"\n\s+content="[^"]+"\n\s+\/>/, '<meta name="twitter:description" content="Descubre tu posición política con un quiz gratuito en español." />')
+    .replace(/"inLanguage":"en"/g, '"inLanguage":"es"')
+    .replace(/"url":"https:\/\/12axes\.lol\//g, '"url":"https://12axes.lol/es');
+  writeFileSync(join(DIST, 'es.html'), es.replace('</head>', `${hreflangLinks(SITE, '/')}\n  </head>`));
 }
 
 const allPaths = [];
@@ -406,7 +479,7 @@ writeFileSync(join(DIST, 'profile.css'), PROFILE_CSS + COUNTRY_PAGE_CSS);
 writeFileSync(join(DIST, 'countries.css'), COUNTRIES_CSS);
 
 const today = new Date().toISOString().slice(0, 10);
-const sitemapUrls = ['/', '/en', ...allPaths]
+const sitemapUrls = ['/', '/br', '/es', ...allPaths]
   .map((p) => `  <url><loc>${SITE}${p}</loc><lastmod>${today}</lastmod></url>`)
   .join('\n');
 writeFileSync(

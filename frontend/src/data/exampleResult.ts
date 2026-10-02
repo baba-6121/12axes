@@ -1102,4 +1102,6 @@ const en: ExampleResult[] = [
   }
 ];
 
-export const EXAMPLE_RESULTS: ExampleResult[] = LANG === 'en' ? en : pt;
+// The Spanish UI uses the English editorial example until the full catalogue
+// overlay is translated; routing and API locale remain Spanish throughout.
+export const EXAMPLE_RESULTS: ExampleResult[] = LANG === 'pt' ? pt : en;

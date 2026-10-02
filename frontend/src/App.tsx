@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { selectAllQuestionsBalanced, selectAndBalanceQuestions } from './utils/quizSelection';
 import { HOME_AXES } from './data/homeAxes';
 import type { ExampleResult } from './data/exampleResult';
-import { LANG, setLang, t } from './i18n';
+import { LANG, localizedPath, setLang, t, type Lang } from './i18n';
 import { fetchQuiz, fetchSharedResult, submitResults } from './services/quizApi';
 import type { AnswerValue, ArchetypeQuestion, QuizPayload, QuizResult, QuizVariant } from './types/quiz';
 import { HomeScreen } from './components/editorial/HomeScreen';
@@ -599,17 +599,19 @@ function MainApp() {
                 <a href="#espectro-politico">{t.navSpectrum}</a>
                 <a href="#faq">{t.navFaq}</a>
                 <a href="#apoie">{t.navSupport}</a>
-                <a href={`${LANG === 'en' ? '/en' : ''}/ideologies`}>{t.navIdeologies}</a>
-                <a href={`${LANG === 'en' ? '/en' : ''}/personalities`}>{t.navPersonalities}</a>
-                <a href={`${LANG === 'en' ? '/en' : ''}/countries`}>{t.navCountries}</a>
-                <button
+                <a href={localizedPath(LANG, '/ideologies')}>{t.navIdeologies}</a>
+                <a href={localizedPath(LANG, '/personalities')}>{t.navPersonalities}</a>
+                <a href={localizedPath(LANG, '/countries')}>{t.navCountries}</a>
+                <select
                   className="e-lang"
-                  type="button"
-                  onClick={() => setLang(LANG === 'pt' ? 'en' : 'pt')}
+                  value={LANG}
+                  onChange={(event) => setLang(event.target.value as Lang)}
                   aria-label={t.langToggleAria}
                 >
-                  {t.langToggleLabel}
-                </button>
+                  <option value="en">EN</option>
+                  <option value="pt">PT</option>
+                  <option value="es">ES</option>
+                </select>
               </nav>
               <button className="e-btn e-btn-primary e-btn-sm" type="button" onClick={openVariantChooser}>
                 {t.navStart} <ArrowIcon />

@@ -25,8 +25,10 @@ export function periodRange(period = '') {
   const nums = parts.map((part) => part.match(/\d+/)).map((m) => (m ? Number(m[0]) : null));
   const years = nums.filter((n) => n !== null);
   if (years.length === 0) return null;
-  const allBc = period.includes('a.C.') && !period.includes('d.C.');
-  const sign = (i) => (allBc || parts[i].includes('a.C.') ? -1 : 1);
+  const hasBc = (value) => /a\.\s*C\./.test(value);
+  const hasAd = (value) => /d\.\s*C\./.test(value);
+  const allBc = hasBc(period) && !hasAd(period);
+  const sign = (i) => (allBc || hasBc(parts[i]) ? -1 : 1);
   const idx = nums.map((n, i) => (n === null ? -1 : i)).filter((i) => i >= 0);
   const start = sign(idx[0]) * nums[idx[0]];
   const end = sign(idx[idx.length - 1]) * nums[idx[idx.length - 1]];
@@ -61,7 +63,7 @@ const STR = {
     ctaText: 'Responda ao quiz e descubra quais países e regimes históricos mais combinam com você.',
     takeTheTest: 'Fazer o teste',
     footer: 'Quiz político independente · 12axes.lol',
-    otherLang: { label: 'English', href: '/en/countries' },
+    otherLang: { label: 'English', href: '/countries' },
     labels: {
       atuais: 'Países atuais',
       antiguidade: 'Antiguidade',
@@ -123,6 +125,48 @@ const STR = {
       xix: 'Empires, newly unified nations and revolutionary experiments of the 19th century.',
       xx: 'Regimes of the 20th and 21st centuries: totalitarianisms, dictatorships, revolutions and democratic experiments.'
     }
+  }
+};
+
+STR.es = {
+  ...STR.en,
+  skip: 'Saltar a la lista',
+  catalogNav: 'Catálogo',
+  homeAria: '12 axes, página de inicio',
+  eyebrow: 'Catálogo',
+  lead: (cur, hist) => `${cur} países actuales y ${hist} regímenes históricos con un perfil completo en los 12 ejes. Desde la Antigüedad hasta la política actual, descubre la posición de cada uno.`,
+  stats: ['perfiles', 'países actuales', 'regímenes históricos', 'años de historia'],
+  erasAria: 'Épocas',
+  searchLabel: 'Buscar país o régimen',
+  searchPlaceholder: 'Buscar país, régimen o época',
+  filterAria: 'Filtrar por época',
+  historicalBlock: 'Regímenes históricos',
+  countCurrent: ['país', 'países'],
+  countHistorical: ['régimen', 'regímenes'],
+  viewProfile: 'Ver perfil',
+  dnaNote: '<b>Cómo leer la franja de 12 iconos:</b> cada icono es un eje y muestra el polo hacia el que se inclina el país o régimen. Cuanto más intenso es el icono, más marcada es la posición. Pasa el cursor para ver los valores.',
+  legendAria: 'Polos de cada eje, en el orden de la franja',
+  emptyTitle: 'No se encontró ningún país',
+  emptyText: 'Prueba con otro término o borra los filtros.',
+  found: ['perfil encontrado', 'perfiles encontrados'],
+  clear: 'Borrar filtros',
+  flagAlt: (name) => `Bandera: ${name}`,
+  ctaTitle: '¿En qué país encajarías?',
+  ctaText: 'Responde el cuestionario y descubre qué países y regímenes históricos encajan mejor contigo.',
+  takeTheTest: 'Hacer el test',
+  footer: 'Cuestionario político independiente · 12axes.lol',
+  otherLang: { label: 'Português', href: '/br/countries' },
+  labels: {
+    atuais: 'Países actuales', antiguidade: 'Antigüedad', medieval: 'Edad Media', moderna: 'Edad Moderna',
+    xix: 'Siglo XIX', xx: 'Siglos XX y XXI'
+  },
+  descriptions: {
+    atuais: 'Estados y regiones autónomas actuales, cada uno con su régimen político y perfil en los 12 ejes.',
+    antiguidade: 'Ciudades-Estado, repúblicas e imperios del mundo antiguo.',
+    medieval: 'Imperios, repúblicas mercantiles y comunidades medievales.',
+    moderna: 'Monarquías, imperios coloniales y repúblicas de la era moderna.',
+    xix: 'Imperios, naciones recién unificadas y experiencias revolucionarias del siglo XIX.',
+    xx: 'Regímenes de los siglos XX y XXI: totalitarismos, dictaduras, revoluciones y experiencias democráticas.'
   }
 };
 

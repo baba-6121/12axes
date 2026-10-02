@@ -4,6 +4,7 @@
 // das páginas de detalhe.
 
 import { poleSprite, poleUse } from './pole-icons.mjs';
+import { hreflangLinks } from './locale-config.mjs';
 
 // Mesma paleta de frontend/src/utils/ideologyColors.ts, na ordem do espectro.
 export const SPECTRUM = [
@@ -19,20 +20,29 @@ export const SPECTRUM = [
 
 export const CATEGORY_KEY = {
   'esquerda radical': 'esq-radical',
+  'izquierda radical': 'esq-radical',
+  'extrema izquierda': 'esq-radical',
   'radical left': 'esq-radical',
   esquerda: 'esquerda',
+  izquierda: 'esquerda',
   left: 'esquerda',
   centro: 'centro',
   center: 'centro',
   direita: 'direita',
+  derecha: 'direita',
   right: 'direita',
   'extrema direita': 'ext-direita',
+  'extrema derecha': 'ext-direita',
   'far-right': 'ext-direita',
   'terceira posição': 'terceira',
+  'tercera posición': 'terceira',
   'third position': 'terceira',
   libertário: 'libertario',
+  libertario: 'libertario',
+  libertaria: 'libertario',
   libertarian: 'libertario',
   anarquismo: 'anarquismo',
+  anarquista: 'anarquismo',
   anarchist: 'anarquismo'
 };
 
@@ -62,7 +72,7 @@ const STR = {
     ctaText: (n) => `Responda ao quiz e veja com quais dessas ${n} ideologias você é mais compatível.`,
     takeTheTest: 'Fazer o teste',
     footer: 'Quiz político independente · 12axes.lol',
-    otherLang: { label: 'English', href: '/en/ideologies' },
+    otherLang: { label: 'English', href: '/ideologies' },
     descriptions: {
       'esq-radical': 'Comunismo revolucionário ou de partido único, com economia planificada e forte concentração do poder do Estado.',
       esquerda: 'Social-democracia, progressismo e maior intervenção do Estado na economia dentro da democracia liberal.',
@@ -110,6 +120,44 @@ const STR = {
       libertario: 'Minimal state, free market, private property and individual liberties, without abolishing the state.',
       anarquismo: 'Rejection of the state and of all coercive authority, with free and voluntary social organization.'
     }
+  }
+};
+
+STR.es = {
+  ...STR.en,
+  skip: 'Saltar a la lista',
+  catalogNav: 'Catálogo',
+  homeAria: '12 axes, página de inicio',
+  eyebrow: 'Catálogo',
+  lead: (n) => `Las ${n} corrientes políticas mapeadas por 12 Axes, organizadas por espectro. Cada una tiene una descripción y un perfil completo en los 12 ejes.`,
+  stats: ['corrientes', 'espectros', 'ejes por perfil'],
+  distribution: 'Distribución en el espectro',
+  distributionAria: (label, n) => `${label}: ${n} ideologías`,
+  searchLabel: 'Buscar ideología',
+  searchPlaceholder: 'Buscar ideología…  ( / )',
+  filterAria: 'Filtrar por espectro',
+  count: 'corrientes',
+  viewProfile: 'Ver perfil',
+  dnaNote: '<b>Cómo leer la franja de 12 iconos:</b> cada icono es un eje y muestra el polo hacia el que se inclina la ideología. Cuanto más intenso es el icono, más marcada es la posición. Pasa el cursor para ver los valores.',
+  legendAria: 'Polos de cada eje, en el orden de la franja',
+  emptyTitle: 'No se encontró ninguna ideología',
+  emptyText: 'Prueba con otro término o borra los filtros.',
+  found: ['ideología encontrada', 'ideologías encontradas'],
+  clear: 'Borrar filtros',
+  ctaTitle: '¿Y tú, dónde encajas?',
+  ctaText: (n) => `Responde el cuestionario y descubre con cuáles de estas ${n} ideologías eres más compatible.`,
+  takeTheTest: 'Hacer el test',
+  footer: 'Cuestionario político independiente · 12axes.lol',
+  otherLang: { label: 'Português', href: '/br/ideologies' },
+  descriptions: {
+    'esq-radical': 'Comunismo revolucionario o de partido único, con una economía planificada y una fuerte concentración del poder estatal.',
+    esquerda: 'Socialdemocracia, progresismo y mayor intervención del Estado en la economía dentro de la democracia liberal.',
+    centro: 'Equilibrio entre mercado y Estado, reformas y estabilidad, con una posición moderada o pragmática.',
+    direita: 'Conservadurismo, liberalismo económico y nacionalismo moderado dentro de la democracia liberal.',
+    'ext-direita': 'Rechazo explícito de la democracia liberal, nacionalismo radical y concentración autoritaria del poder.',
+    terceira: 'Síntesis nacionalista y corporativista que rechaza tanto el capitalismo liberal como el marxismo.',
+    libertario: 'Estado mínimo, libre mercado, propiedad privada y libertades individuales, sin abolir el Estado.',
+    anarquismo: 'Rechazo del Estado y de toda autoridad coercitiva, con una organización social libre y voluntaria.'
   }
 };
 
@@ -209,9 +257,7 @@ export function ideologiesIndexPage(L, { locale, site, gaSnippet, escapeHtml, pr
     <meta name="description" content="${escapeHtml(description)}" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="${url}" />
-    <link rel="alternate" hreflang="pt-BR" href="${site}${basePath}" />
-    <link rel="alternate" hreflang="en" href="${site}/en${basePath}" />
-    <link rel="alternate" hreflang="x-default" href="${site}/en${basePath}" />
+${hreflangLinks(site, basePath)}
     <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

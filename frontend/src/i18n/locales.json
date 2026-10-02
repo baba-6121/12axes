@@ -1,0 +1,29 @@
+{
+  "en": {
+    "pathPrefix": "",
+    "htmlLang": "en",
+    "hreflang": "en",
+    "ogLocale": "en_US",
+    "label": "English",
+    "default": true,
+    "legacyPrefixes": ["/en"]
+  },
+  "pt": {
+    "pathPrefix": "/br",
+    "htmlLang": "pt-BR",
+    "hreflang": "pt-BR",
+    "ogLocale": "pt_BR",
+    "label": "Português",
+    "default": false,
+    "legacyPrefixes": ["", "/pt"]
+  },
+  "es": {
+    "pathPrefix": "/es",
+    "htmlLang": "es",
+    "hreflang": "es",
+    "ogLocale": "es_ES",
+    "label": "Español",
+    "default": false,
+    "legacyPrefixes": []
+  }
+}

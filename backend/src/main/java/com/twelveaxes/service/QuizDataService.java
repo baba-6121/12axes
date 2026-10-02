@@ -36,6 +36,7 @@ public class QuizDataService {
 
     public static final String LANG_PT = "pt";
     public static final String LANG_EN = "en";
+    public static final String LANG_ES = "es";
 
     private final ObjectMapper objectMapper;
     private Map<String, LocaleBundle> bundles;
@@ -110,8 +111,11 @@ public class QuizDataService {
         validateArchetypeQuestions(axes);
 
         LocaleBundle pt = LocaleBundle.of(axes, questions, ideologies, countries, personalities);
-        LocaleBundle en = buildEnglishBundle(pt);
-        bundles = Map.of(LANG_PT, pt, LANG_EN, en);
+        LocaleBundle en = buildLocalizedBundle(pt, LANG_EN);
+        // Spanish overlays are layered on the English bundle so any future
+        // missing field falls back to English, never Portuguese.
+        LocaleBundle es = buildLocalizedBundle(en, LANG_ES);
+        bundles = Map.of(LANG_PT, pt, LANG_EN, en, LANG_ES, es);
 
         List<Book> bookList = readJson("data/books.json", new TypeReference<>() {});
         List<String> unknownBookAuthors = bookList.stream()
@@ -130,16 +134,17 @@ public class QuizDataService {
         validatePersonalityProfiles(pt);
     }
 
-    // Overlays em data/i18n/en/*.json trazem só os campos de texto, chaveados por id.
-    // Item sem tradução (ou arquivo ausente) cai no texto PT — nada quebra.
-    private LocaleBundle buildEnglishBundle(LocaleBundle pt) throws IOException {
-        Map<String, Map<String, String>> axesTr = readOverlay("data/i18n/en/axes.json");
-        Map<String, Map<String, String>> questionsTr = readOverlay("data/i18n/en/questions.json");
-        Map<String, Map<String, String>> ideologiesTr = readOverlay("data/i18n/en/ideologies.json");
-        Map<String, Map<String, String>> countriesTr = readOverlay("data/i18n/en/countries.json");
-        Map<String, Map<String, String>> personalitiesTr = readOverlay("data/i18n/en/personalities.json");
+    // Overlays em data/i18n/<locale>/*.json trazem só os campos de texto,
+    // chaveados por id. O bundle anterior funciona como fallback, permitindo
+    // adicionar idiomas sem duplicar vetores, IDs ou regras de matching.
+    private LocaleBundle buildLocalizedBundle(LocaleBundle base, String locale) throws IOException {
+        Map<String, Map<String, String>> axesTr = readOverlay("data/i18n/" + locale + "/axes.json");
+        Map<String, Map<String, String>> questionsTr = readOverlay("data/i18n/" + locale + "/questions.json");
+        Map<String, Map<String, String>> ideologiesTr = readOverlay("data/i18n/" + locale + "/ideologies.json");
+        Map<String, Map<String, String>> countriesTr = readOverlay("data/i18n/" + locale + "/countries.json");
+        Map<String, Map<String, String>> personalitiesTr = readOverlay("data/i18n/" + locale + "/personalities.json");
 
-        List<Axis> axes = pt.axes().stream().map(axis -> {
+        List<Axis> axes = base.axes().stream().map(axis -> {
             Map<String, String> tr = axesTr.get(axis.id());
             if (tr == null) return axis;
             return new Axis(
@@ -152,13 +157,13 @@ public class QuizDataService {
             );
         }).toList();
 
-        List<Question> questions = pt.questions().stream().map(question -> {
+        List<Question> questions = base.questions().stream().map(question -> {
             Map<String, String> tr = questionsTr.get(question.id());
             if (tr == null || tr.get("text") == null) return question;
             return new Question(question.id(), question.axisId(), tr.get("text"), question.agreePole(), question.weight());
         }).toList();
 
-        List<Ideology> ideologies = pt.ideologies().stream().map(ideology -> {
+        List<Ideology> ideologies = base.ideologies().stream().map(ideology -> {
             Map<String, String> tr = ideologiesTr.get(ideology.id());
             if (tr == null) return ideology;
             return new Ideology(
@@ -174,7 +179,7 @@ public class QuizDataService {
             );
         }).toList();
 
-        List<Country> countries = pt.countries().stream().map(country -> {
+        List<Country> countries = base.countries().stream().map(country -> {
             Map<String, String> tr = countriesTr.get(country.id());
             if (tr == null) return country;
             return new Country(
@@ -188,13 +193,13 @@ public class QuizDataService {
                     country.flagSourceUrl(),
                     country.flagNote(),
                     country.historical(),
-                    country.period(),
+                    localizeHistoricalDate(country.period(), locale),
                     country.vector(),
                     country.religions()
             );
         }).toList();
 
-        List<Personality> personalities = pt.personalities().stream().map(personality -> {
+        List<Personality> personalities = base.personalities().stream().map(personality -> {
             Map<String, String> tr = personalitiesTr.get(personality.id());
             if (tr == null) return personality;
             return new Personality(
@@ -202,7 +207,7 @@ public class QuizDataService {
                     tr.getOrDefault("name", personality.name()),
                     tr.getOrDefault("role", personality.role()),
                     personality.category(),
-                    personality.lifespan(),
+                    localizeHistoricalDate(personality.lifespan(), locale),
                     tr.getOrDefault("description", personality.description()),
                     personality.imagePath(),
                     personality.imageSourceName(),
@@ -213,6 +218,41 @@ public class QuizDataService {
         }).toList();
 
         return LocaleBundle.of(axes, questions, ideologies, countries, personalities);
+    }
+
+    private static String localizeHistoricalDate(String value, String locale) {
+        if (value == null || !LANG_ES.equals(locale)) {
+            return value;
+        }
+        return value
+                .replace("janeiro", "enero")
+                .replace("fevereiro", "febrero")
+                .replace("março", "marzo")
+                .replace("maio", "mayo")
+                .replace("junho", "junio")
+                .replace("julho", "julio")
+                .replace("setembro", "septiembre")
+                .replace("outubro", "octubre")
+                .replace("novembro", "noviembre")
+                .replace("dezembro", "diciembre")
+                .replace("January", "enero")
+                .replace("February", "febrero")
+                .replace("March", "marzo")
+                .replace("April", "abril")
+                .replace("May", "mayo")
+                .replace("June", "junio")
+                .replace("July", "julio")
+                .replace("August", "agosto")
+                .replace("September", "septiembre")
+                .replace("October", "octubre")
+                .replace("November", "noviembre")
+                .replace("December", "diciembre")
+                .replaceAll("(?i)\\bBCE\\b", "a. C.")
+                .replaceAll("(?i)\\bBC\\b", "a. C.")
+                .replaceAll("(?i)\\bCE\\b", "d. C.")
+                .replaceAll("(?i)\\bAD\\b", "d. C.")
+                .replaceAll("(?i)a\\.\\s*C\\.", "a. C.")
+                .replaceAll("(?i)d\\.\\s*C\\.", "d. C.");
     }
 
     private Map<String, Map<String, String>> readOverlay(String path) throws IOException {
@@ -233,6 +273,8 @@ public class QuizDataService {
         }
         return switch (lang.trim().toLowerCase()) {
             case LANG_EN, "en-us", "en-gb" -> LANG_EN;
+            case LANG_ES, "es-es", "es-mx", "es-ar", "es-cl", "es-co" -> LANG_ES;
+            case LANG_PT, "pt-br", "pt-pt" -> LANG_PT;
             default -> LANG_PT;
         };
     }
@@ -320,9 +362,11 @@ public class QuizDataService {
         int questionCount = normalizedVariant.equals(EXTREME_VARIANT)
                 ? data.questions().size()
                 : questionsPerAxis * data.axes().size();
-        String description = normalizedLang.equals(LANG_EN)
-                ? "A quiz of " + questionCount + " questions to estimate your position on the 12 political axes."
-                : "Um quiz de " + questionCount + " perguntas para estimar sua posição nos 12 eixos políticos.";
+        String description = switch (normalizedLang) {
+            case LANG_PT -> "Um quiz de " + questionCount + " perguntas para estimar sua posição nos 12 eixos políticos.";
+            case LANG_ES -> "Un quiz de " + questionCount + " preguntas para estimar tu posición en los 12 ejes políticos.";
+            default -> "A quiz of " + questionCount + " questions to estimate your position on the 12 political axes.";
+        };
         return new QuizPayload(
                 "12 Axes",
                 description,
@@ -449,21 +493,28 @@ public class QuizDataService {
     }
 
     private String labelFor(AnswerValue value, String lang) {
-        if (LANG_EN.equals(lang)) {
-            return switch (value) {
+        return switch (lang) {
+            case LANG_PT -> switch (value) {
+                case STRONGLY_AGREE -> "Concordo totalmente";
+                case AGREE -> "Concordo";
+                case NEUTRAL -> "Neutro ou Depende";
+                case DISAGREE -> "Discordo";
+                case STRONGLY_DISAGREE -> "Discordo totalmente";
+            };
+            case LANG_ES -> switch (value) {
+                case STRONGLY_AGREE -> "Totalmente de acuerdo";
+                case AGREE -> "De acuerdo";
+                case NEUTRAL -> "Neutral o depende";
+                case DISAGREE -> "En desacuerdo";
+                case STRONGLY_DISAGREE -> "Totalmente en desacuerdo";
+            };
+            default -> switch (value) {
                 case STRONGLY_AGREE -> "Strongly agree";
                 case AGREE -> "Agree";
                 case NEUTRAL -> "Neutral or It depends";
                 case DISAGREE -> "Disagree";
                 case STRONGLY_DISAGREE -> "Strongly disagree";
             };
-        }
-        return switch (value) {
-            case STRONGLY_AGREE -> "Concordo totalmente";
-            case AGREE -> "Concordo";
-            case NEUTRAL -> "Neutro ou Depende";
-            case DISAGREE -> "Discordo";
-            case STRONGLY_DISAGREE -> "Discordo totalmente";
         };
     }
 

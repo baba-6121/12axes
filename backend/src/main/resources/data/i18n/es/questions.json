@@ -1,0 +1,962 @@
+[
+  {
+    "id": "estrutura_01",
+    "text": "Los gobiernos regionales y locales deben tener la autonomía para decidir sus propios asuntos sin depender del gobierno nacional."
+  },
+  {
+    "id": "estrutura_02",
+    "text": "Todo el país debe seguir las mismas leyes, incluso cuando sus regiones prefieren lo contrario."
+  },
+  {
+    "id": "estrutura_03",
+    "text": "Se deben hacer leyes y gestionar los servicios públicos lo más cerca posible de las comunidades locales."
+  },
+  {
+    "id": "estrutura_04",
+    "text": "Un plan de estudios nacional único es mejor que permitir a cada región establecer su propio."
+  },
+  {
+    "id": "estrutura_05",
+    "text": "Cada Estado o provincia debe ser libre de redactar su propia constitución sin interferencia del gobierno nacional."
+  },
+  {
+    "id": "estrutura_06",
+    "text": "Una sola policía nacional trabajaría mejor que varias fuerzas regionales autónomas."
+  },
+  {
+    "id": "estrutura_07",
+    "text": "La mayoría de los ingresos fiscales deben permanecer en la región o municipio donde se recogió."
+  },
+  {
+    "id": "estrutura_08",
+    "text": "La salud pública debe seguir pautas nacionales uniformes bajo una autoridad central."
+  },
+  {
+    "id": "estrutura_09",
+    "text": "Las regiones deben tener derecho a se separe si la mayoría local vota por ello."
+  },
+  {
+    "id": "estrutura_10",
+    "text": "Los impuestos regionales deben seguir las normas nacionales para evitar controversias fiscales entre regiones."
+  },
+  {
+    "id": "estrutura_11",
+    "text": "Las comunidades indígenas y tradicionales deben poder vivir bajo sus propias reglas dentro de sus territorios."
+  },
+  {
+    "id": "estrutura_12",
+    "text": "Las leyes laborales deben ser las mismas en cada región, sin variaciones regionales."
+  },
+  {
+    "id": "estrutura_13",
+    "text": "Los municipios deben poder aprobar sus propias leyes, incluso si difieren de las leyes nacionales."
+  },
+  {
+    "id": "estrutura_14",
+    "text": "Cuando un líder regional y nacional discrepa, el líder nacional debe tener la última palabra."
+  },
+  {
+    "id": "estrutura_15",
+    "text": "Mi país debe ser una unión de regiones con amplia autonomía política."
+  },
+  {
+    "id": "estrutura_16",
+    "text": "El gobierno nacional debería poder revocar las leyes regionales y locales que contravengan el interés nacional."
+  },
+  {
+    "id": "estrutura_17",
+    "text": "Las regiones con una fuerte identidad cultural deben tener más autonomía política."
+  },
+  {
+    "id": "estrutura_18",
+    "text": "No debería permitirse que una región se separe, incluso con el apoyo de su población local."
+  },
+  {
+    "id": "estrutura_19",
+    "text": "La educación pública debe ser administrada por los gobiernos locales en lugar del gobierno nacional."
+  },
+  {
+    "id": "estrutura_20",
+    "text": "Los dirigentes regionales y locales deberían adoptar decisiones gubernamentales centrales sobre asuntos locales."
+  },
+  {
+    "id": "representacao_01",
+    "text": "Las elecciones libres deben mantenerse incluso cuando eligen gobiernos malos."
+  },
+  {
+    "id": "representacao_02",
+    "text": "En crisis graves, un líder fuerte debe poder gobernar sin depender de la legislatura."
+  },
+  {
+    "id": "representacao_03",
+    "text": "La oposición política debe tener derecho a criticar a cualquier gobierno en público."
+  },
+  {
+    "id": "representacao_04",
+    "text": "Los votantes con poco conocimiento político deben tener menos influencia sobre quién gobierna."
+  },
+  {
+    "id": "representacao_05",
+    "text": "Los tribunales constitucionales, como un tribunal supremo, deben poder derogar leyes respaldadas por la mayoría que violan la Constitución."
+  },
+  {
+    "id": "representacao_06",
+    "text": "Un líder competente debe poder gobernar sin elecciones frecuentes o cambios obligatorios en el liderazgo."
+  },
+  {
+    "id": "representacao_07",
+    "text": "El sufragio secreto y universal no es negociable, incluso para los votantes mal informados."
+  },
+  {
+    "id": "representacao_08",
+    "text": "Un líder eficaz debería poder permanecer en el poder sin enfrentarse a elecciones regulares."
+  },
+  {
+    "id": "representacao_09",
+    "text": "El pueblo debe poder revocar las leyes mediante referéndum, sin depender de la legislatura."
+  },
+  {
+    "id": "representacao_10",
+    "text": "Los líderes deben ser elegidos por competencia, tradición o sucesión en lugar de por voto popular."
+  },
+  {
+    "id": "representacao_11",
+    "text": "Los votantes deben ser capaces de eliminar a un político malo de la oficina antes del final del término."
+  },
+  {
+    "id": "representacao_12",
+    "text": "Preferiría un régimen autoritario a la democracia si acelerara el desarrollo de mi país."
+  },
+  {
+    "id": "representacao_13",
+    "text": "Las oficinas públicas pueden ser llenadas por ciudadanos seleccionados aleatoriamente, como lo son los jurados, en lugar de por elección."
+  },
+  {
+    "id": "representacao_14",
+    "text": "Los expertos seleccionados para sus calificaciones deben gobernar sin ser elegidos por el público."
+  },
+  {
+    "id": "representacao_15",
+    "text": "Aquellos que gobiernan deben tener el consentimiento y la aprobación de las personas afectadas por sus decisiones."
+  },
+  {
+    "id": "representacao_16",
+    "text": "Debe restringirse el derecho de voto; no se debe permitir a todos los adultos votar."
+  },
+  {
+    "id": "representacao_17",
+    "text": "Prefiero una sociedad gobernada por asambleas populares en lugar de líderes políticos."
+  },
+  {
+    "id": "representacao_18",
+    "text": "Las principales reformas no deben interrumpirse con frecuentes elecciones o cambios en el gobierno."
+  },
+  {
+    "id": "representacao_19",
+    "text": "Incluso un gobierno elegido por una gran mayoría debe respetar todos los derechos de la oposición."
+  },
+  {
+    "id": "representacao_20",
+    "text": "Prefiero un régimen autocrítico que garantice el orden, la seguridad y la prosperidad sobre la democracia electoral."
+  },
+  {
+    "id": "poder_01",
+    "text": "Las operaciones policiales agresivas están justificadas para combatir el delito en zonas controladas por grupos delictivos."
+  },
+  {
+    "id": "poder_02",
+    "text": "El consumo de cannabis de adultos debe legalizarse o despenalizarse."
+  },
+  {
+    "id": "poder_03",
+    "text": "Se debe permitir al Estado monitorear conversaciones digitales para prevenir y combatir el crimen."
+  },
+  {
+    "id": "poder_04",
+    "text": "La libertad de expresión debe proteger incluso las opiniones consideradas ofensivas."
+  },
+  {
+    "id": "poder_05",
+    "text": "Las cámaras de reconocimiento facial en las calles deben ampliarse para reducir el crimen."
+  },
+  {
+    "id": "poder_06",
+    "text": "Las actividades consensuales entre adultos, como el consumo de drogas, el juego y el trabajo sexual, no deben ser penalizadas."
+  },
+  {
+    "id": "poder_07",
+    "text": "El Estado debe ser capaz de disolver partidos políticos que amenazan el orden público."
+  },
+  {
+    "id": "poder_08",
+    "text": "Todas las drogas, incluida la cocaína, deben ser legalizadas para adultos."
+  },
+  {
+    "id": "poder_09",
+    "text": "El acceso civil a las armas de fuego debe verse severamente restringido por ley."
+  },
+  {
+    "id": "poder_10",
+    "text": "Se debe permitir a los adultos mantener las armas de fuego en casa para su protección personal."
+  },
+  {
+    "id": "poder_11",
+    "text": "En situaciones graves, se debería permitir al gobierno imponer un toque de queda."
+  },
+  {
+    "id": "poder_12",
+    "text": "La eutanasia voluntaria debe ser legalizada para las personas que sufren de enfermedades terminales."
+  },
+  {
+    "id": "poder_13",
+    "text": "La vacunación debe ser obligatoria, incluso contra la voluntad de los que se niegan."
+  },
+  {
+    "id": "poder_14",
+    "text": "Cuando la culpa es incierta, el Estado debe evitar una condena incluso si algunas personas culpables se liberan."
+  },
+  {
+    "id": "poder_15",
+    "text": "La pena de muerte debe adoptarse por delitos como la violación y el asesinato."
+  },
+  {
+    "id": "poder_16",
+    "text": "Cualquier ley que prohíba lo que los adultos hacen en privado es un abuso por parte del estado."
+  },
+  {
+    "id": "poder_17",
+    "text": "El gobierno debería poder deshacer cuentas que divulgan información falsa."
+  },
+  {
+    "id": "poder_18",
+    "text": "No se debe permitir que el gobierno rastree las compras realizadas a través de sistemas de pago digitales."
+  },
+  {
+    "id": "poder_19",
+    "text": "Los sospechosos de terrorismo deben ser detenidos sin juicio hasta que la amenaza haya pasado."
+  },
+  {
+    "id": "poder_20",
+    "text": "Nadie debe ser obligado a desbloquear su teléfono para la policía."
+  },
+  {
+    "id": "imigracao_01",
+    "text": "Los que emigran a un país deben aprender el idioma y adoptar costumbres locales."
+  },
+  {
+    "id": "imigracao_02",
+    "text": "Una sociedad multicultural debe vivir con varios idiomas en la vida cotidiana."
+  },
+  {
+    "id": "imigracao_03",
+    "text": "Cerrar las fronteras puede ser necesario para preservar la identidad cultural de un país."
+  },
+  {
+    "id": "imigracao_04",
+    "text": "Un país debe permitir a los inmigrantes preservar sus costumbres y tradiciones, incluso cuando éstas difieren de las locales."
+  },
+  {
+    "id": "imigracao_05",
+    "text": "Un país debe rechazar la entrada a inmigrantes que rechazan las costumbres locales."
+  },
+  {
+    "id": "imigracao_06",
+    "text": "Los inmigrantes no deben abandonar sus costumbres para vivir bien en el país."
+  },
+  {
+    "id": "imigracao_07",
+    "text": "La preservación de las tradiciones nacionales importa más que la adquisición de costumbres extranjeras."
+  },
+  {
+    "id": "imigracao_08",
+    "text": "La coexistencia de diferentes idiomas y culturas debe fomentarse en un país."
+  },
+  {
+    "id": "imigracao_09",
+    "text": "Los países tienen derecho a preferir a los inmigrantes de culturas similares a las propias."
+  },
+  {
+    "id": "imigracao_10",
+    "text": "Las culturas traídas por los inmigrantes deben tener un lugar en la identidad nacional de un país."
+  },
+  {
+    "id": "imigracao_11",
+    "text": "Las personas que emigran a un país deben ser obligadas a adaptarse a las costumbres locales."
+  },
+  {
+    "id": "imigracao_12",
+    "text": "Mi país debe seguir dando la bienvenida a los inmigrantes de países que enfrentan graves crisis."
+  },
+  {
+    "id": "imigracao_13",
+    "text": "La fluidez en el idioma principal del país debe ser una prioridad en la política de inmigración."
+  },
+  {
+    "id": "imigracao_14",
+    "text": "Los inmigrantes no deben ser juzgados por costumbres atribuidas a su país de origen."
+  },
+  {
+    "id": "imigracao_15",
+    "text": "Los barrios cuyos residentes inmigrantes permanecen aislados culturalmente crean problemas para el país."
+  },
+  {
+    "id": "imigracao_16",
+    "text": "Los hijos de inmigrantes también deben poder estudiar en el idioma de sus padres, en escuelas bilingües."
+  },
+  {
+    "id": "imigracao_17",
+    "text": "La inmigración debe limitarse a preservar la cultura predominante del país."
+  },
+  {
+    "id": "imigracao_18",
+    "text": "Las fronteras deben abrirse: cualquier persona pacífica puede vivir en cualquier país."
+  },
+  {
+    "id": "imigracao_19",
+    "text": "Los inmigrantes que rechazan las costumbres locales deben perder el derecho a permanecer en el país."
+  },
+  {
+    "id": "imigracao_20",
+    "text": "La idea de la identidad nacional es obsoleta: todos somos ciudadanos del mundo."
+  },
+  {
+    "id": "diplomacia_01",
+    "text": "Un país debe mantener fuertes fuerzas armadas para obtener respeto en el extranjero."
+  },
+  {
+    "id": "diplomacia_02",
+    "text": "La negociación y la diplomacia deben agotarse antes de cualquier acción militar."
+  },
+  {
+    "id": "diplomacia_03",
+    "text": "Las huelgas preventivas son aceptables contra los enemigos que se preparan para atacar."
+  },
+  {
+    "id": "diplomacia_04",
+    "text": "Las guerras casi nunca valen la pena, incluso contra regímenes hostiles."
+  },
+  {
+    "id": "diplomacia_05",
+    "text": "Mi país debe priorizar el gasto militar incluso cuando otras áreas necesitan recursos."
+  },
+  {
+    "id": "diplomacia_06",
+    "text": "Las negociaciones diplomáticas deben tener prioridad en la ampliación del arsenal militar."
+  },
+  {
+    "id": "diplomacia_07",
+    "text": "Mi país debe perseguir armas nucleares para evitar depender de la protección contra cualquier poder extranjero."
+  },
+  {
+    "id": "diplomacia_08",
+    "text": "La reducción del gasto militar debe ser una prioridad para reducir el riesgo de guerra."
+  },
+  {
+    "id": "diplomacia_09",
+    "text": "El servicio militar obligatorio es necesario para preparar un país de guerra."
+  },
+  {
+    "id": "diplomacia_10",
+    "text": "Los acuerdos de desarme deben tener prioridad sobre la ampliación de los arsenales militares."
+  },
+  {
+    "id": "diplomacia_11",
+    "text": "La capacidad de fabricar armas domésticamente es esencial para la defensa nacional."
+  },
+  {
+    "id": "diplomacia_12",
+    "text": "Ninguna causa política o ideológica justifica comenzar una guerra."
+  },
+  {
+    "id": "diplomacia_13",
+    "text": "El espionaje y las operaciones militares encubiertas son herramientas legítimas de un estado."
+  },
+  {
+    "id": "diplomacia_14",
+    "text": "Mi país debe apoyar a los tribunales internacionales que escuchen casos de crímenes de guerra, incluidos casos de aliados."
+  },
+  {
+    "id": "diplomacia_15",
+    "text": "Los doctores y las armas autónomas proporcionan una ventaja decisiva, y mi país debe desarrollarlas."
+  },
+  {
+    "id": "diplomacia_16",
+    "text": "Mi país debe dialogar incluso con regímenes hostiles antes de amenazar la acción militar."
+  },
+  {
+    "id": "diplomacia_17",
+    "text": "Mi país debería estar listo para iniciar una guerra si eso asegura sus intereses vitales."
+  },
+  {
+    "id": "diplomacia_18",
+    "text": "Mi país debería abolir sus fuerzas armadas."
+  },
+  {
+    "id": "diplomacia_19",
+    "text": "La paz sólo existe cuando el enemigo sabe que la respuesta a un ataque será devastadora."
+  },
+  {
+    "id": "diplomacia_20",
+    "text": "Las Naciones Unidas deben poder mediar conflictos antes de cualquier acción militar."
+  },
+  {
+    "id": "intervencao_01",
+    "text": "Ningún país tiene derecho a intentar cambiar el gobierno de otro país."
+  },
+  {
+    "id": "intervencao_02",
+    "text": "Presionar a otros países es legítimo cuando el interés nacional está en juego."
+  },
+  {
+    "id": "intervencao_03",
+    "text": "Mi país debe evitar alianzas militares que puedan convertirse en conflictos en el extranjero."
+  },
+  {
+    "id": "intervencao_04",
+    "text": "La política exterior debe priorizar la influencia de mi país sobre sus vecinos."
+  },
+  {
+    "id": "intervencao_05",
+    "text": "Mi país no debe enviar soldados al extranjero, ni siquiera en misiones de mantenimiento de la paz."
+  },
+  {
+    "id": "intervencao_06",
+    "text": "Mi país debe usar su peso para defender a sus empresas en el extranjero."
+  },
+  {
+    "id": "intervencao_07",
+    "text": "Incluso ante un genocidio en un país vecino, mi país no debe involucrarse militarmente."
+  },
+  {
+    "id": "intervencao_08",
+    "text": "Debería permitirse a mi país imponer sanciones cuando sus intereses sean amenazados."
+  },
+  {
+    "id": "intervencao_09",
+    "text": "Los conflictos entre países deben ser resueltos por organizaciones internacionales, no por grandes poderes."
+  },
+  {
+    "id": "intervencao_10",
+    "text": "Mi país debe ejercer liderazgo político sobre su región."
+  },
+  {
+    "id": "intervencao_11",
+    "text": "Mi país debe evitar unirse a bloques geopolíticos exclusivos."
+  },
+  {
+    "id": "intervencao_12",
+    "text": "Influir gobiernos vecinos es aceptable cuando aumenta la seguridad de mi país."
+  },
+  {
+    "id": "intervencao_13",
+    "text": "Cada nación debe resolver sus propios problemas sin interferencia externa."
+  },
+  {
+    "id": "intervencao_14",
+    "text": "Mi país debería estar dispuesto a utilizar la fuerza militar para proteger sus intereses en su región."
+  },
+  {
+    "id": "intervencao_15",
+    "text": "Mi país no debe imponer sanciones a países de los que desaprueba los gobiernos."
+  },
+  {
+    "id": "intervencao_16",
+    "text": "Ningún tratado internacional debe contar por más que el interés nacional."
+  },
+  {
+    "id": "intervencao_17",
+    "text": "Mi país debe permanecer neutral en las guerras, incluso bajo presión de los aliados."
+  },
+  {
+    "id": "intervencao_18",
+    "text": "Defender los intereses nacionales debe guiar las acciones de mi país en el extranjero."
+  },
+  {
+    "id": "intervencao_19",
+    "text": "Mi país no debe mantener bases militares en otros países."
+  },
+  {
+    "id": "intervencao_20",
+    "text": "Mi país debe presionar a los gobiernos vecinos que amenazan a sus ciudadanos."
+  },
+  {
+    "id": "economia_01",
+    "text": "Una revolución puede ser necesaria para sacar el poder económico de las manos de los pocos."
+  },
+  {
+    "id": "economia_02",
+    "text": "Las empresas privadas deben prestar servicios públicos cuando haya competencia."
+  },
+  {
+    "id": "economia_03",
+    "text": "Las empresas consideradas estratégicamente importantes deben permanecer bajo control público."
+  },
+  {
+    "id": "economia_04",
+    "text": "La atención sanitaria debe proporcionarse principalmente a través de la empresa privada."
+  },
+  {
+    "id": "economia_05",
+    "text": "Las grandes empresas deben pertenecer a sus trabajadores en lugar de propietarios privados."
+  },
+  {
+    "id": "economia_06",
+    "text": "Incluso las carreteras, la policía y los tribunales pueden ser gestionados por empresas privadas."
+  },
+  {
+    "id": "economia_07",
+    "text": "Cuando el mercado excluye a los pobres, el estado debe asumir el servicio directamente."
+  },
+  {
+    "id": "economia_08",
+    "text": "La herencia familiar debe protegerse de políticas que redistribuyan la riqueza."
+  },
+  {
+    "id": "economia_09",
+    "text": "El cuidado de la salud, la educación y el agua no deben funcionar bajo la lógica del beneficio."
+  },
+  {
+    "id": "economia_10",
+    "text": "Recoger impuestos es, al final, una forma de robo."
+  },
+  {
+    "id": "economia_11",
+    "text": "El Estado debe garantizar un ingreso mínimo a todos los ciudadanos necesitados."
+  },
+  {
+    "id": "economia_12",
+    "text": "La seguridad laboral en tiempo de vida de los empleados públicos debe ser limitada o eliminada."
+  },
+  {
+    "id": "economia_13",
+    "text": "El Estado debe limitar el poder de grandes empresas privadas."
+  },
+  {
+    "id": "economia_14",
+    "text": "Los programas de asistencia en efectivo deben tener una duración máxima."
+  },
+  {
+    "id": "economia_15",
+    "text": "La reforma agraria sigue siendo una medida necesaria en mi país."
+  },
+  {
+    "id": "economia_16",
+    "text": "Los trabajadores deben negociar salarios directamente con los empleadores, sin sindicatos."
+  },
+  {
+    "id": "economia_17",
+    "text": "Los bancos públicos deben seguir financiando el desarrollo del país."
+  },
+  {
+    "id": "economia_18",
+    "text": "La propiedad privada debe ser respetada incluso cuando genera una gran desigualdad."
+  },
+  {
+    "id": "economia_19",
+    "text": "El riesgo de vender empresas estatales por menos de lo que vale la pena justifica mantenerlas bajo control público."
+  },
+  {
+    "id": "economia_20",
+    "text": "Las empresas privadas deben tener prioridad en la gestión de los servicios públicos."
+  },
+  {
+    "id": "controle_01",
+    "text": "El gobierno debe planificar sectores estratégicos como la energía, la vivienda y la industria."
+  },
+  {
+    "id": "controle_02",
+    "text": "Los precios y salarios deben ser fijados por el mercado sin intervención gubernamental."
+  },
+  {
+    "id": "controle_03",
+    "text": "El banco central debe obedecer al gobierno elegido, no actuar con total independencia."
+  },
+  {
+    "id": "controle_04",
+    "text": "Las empresas deben establecer los términos de empleo con mínima interferencia gubernamental."
+  },
+  {
+    "id": "controle_05",
+    "text": "Las personas más ricas deben pagar más impuestos para financiar programas públicos."
+  },
+  {
+    "id": "controle_06",
+    "text": "Los impuestos deben reducirse para fomentar el crecimiento económico."
+  },
+  {
+    "id": "controle_07",
+    "text": "El Estado debe subvencionar industrias nacionales de importancia estratégica."
+  },
+  {
+    "id": "controle_08",
+    "text": "El salario mínimo no debe ser demasiado alto, porque eso reduce los puestos de trabajo disponibles para los trabajadores más pobres."
+  },
+  {
+    "id": "controle_09",
+    "text": "En crisis graves, el gobierno debería poder congelar los alquileres."
+  },
+  {
+    "id": "controle_10",
+    "text": "El gobierno no debe congelar los precios, incluso durante períodos de alta inflación."
+  },
+  {
+    "id": "controle_11",
+    "text": "El gobierno debe seleccionar y apoyar a las principales empresas nacionales en sectores estratégicos."
+  },
+  {
+    "id": "controle_12",
+    "text": "Las criptomonedas como Bitcoin deben poder competir libremente con el dinero del gobierno."
+  },
+  {
+    "id": "controle_13",
+    "text": "Una economía totalmente planificada por el Estado funcionaría mejor que el libre mercado."
+  },
+  {
+    "id": "controle_14",
+    "text": "El Estado debe evitar nuevas regulaciones sobre actividad económica."
+  },
+  {
+    "id": "controle_15",
+    "text": "Durante una recesión, el gobierno debería gastar más para estimular la economía, incluso si eso aumenta la deuda pública."
+  },
+  {
+    "id": "controle_16",
+    "text": "Un banco central independiente vale más que los deseos políticos del gobierno actual."
+  },
+  {
+    "id": "controle_17",
+    "text": "El gobierno debería poder controlar el tipo de cambio para proteger la economía nacional."
+  },
+  {
+    "id": "controle_18",
+    "text": "El banco central debe ser abolido, dejando tasas de dinero e intereses al mercado."
+  },
+  {
+    "id": "controle_19",
+    "text": "Un salario mínimo establecido por ley protege a los trabajadores más que la libre negociación."
+  },
+  {
+    "id": "controle_20",
+    "text": "Aquellos que tienen dinero deben ser capaces de enviarlo al extranjero sin pedir permiso del gobierno."
+  },
+  {
+    "id": "comercio_01",
+    "text": "Las industrias nacionales deben protegerse con aranceles cuando sea necesario."
+  },
+  {
+    "id": "comercio_02",
+    "text": "Los aranceles deben reducirse a casi cero, incluso si algunas industrias nacionales fallan."
+  },
+  {
+    "id": "comercio_03",
+    "text": "Prefiero limitar las importaciones para proteger los empleos industriales, incluso si aumentan los precios."
+  },
+  {
+    "id": "comercio_04",
+    "text": "Mi país debe celebrar acuerdos de libre comercio con otros países."
+  },
+  {
+    "id": "comercio_05",
+    "text": "Mi país debe producir internamente todo lo que consume, incluso pagando mucho más por ello."
+  },
+  {
+    "id": "comercio_06",
+    "text": "Los productos extranjeros deben enfrentar pocas restricciones económicas al entrar en el país."
+  },
+  {
+    "id": "comercio_07",
+    "text": "El gobierno debería limitar las importaciones que amenazan la industria local y los empleos."
+  },
+  {
+    "id": "comercio_08",
+    "text": "El mundo estaría mejor sin fronteras económicas, trabajando como un solo mercado mundial."
+  },
+  {
+    "id": "comercio_09",
+    "text": "Las empresas extranjeras deben prohibirse de comprar las empresas estratégicamente importantes de mi país."
+  },
+  {
+    "id": "comercio_10",
+    "text": "Mi país debería profundizar los vínculos comerciales con otros países."
+  },
+  {
+    "id": "comercio_11",
+    "text": "La producción nacional de alimentos debe tener prioridad sobre las importaciones baratas."
+  },
+  {
+    "id": "comercio_12",
+    "text": "Apoyo hacer más fácil para los inversores extranjeros invertir en mi país."
+  },
+  {
+    "id": "comercio_13",
+    "text": "Las compras de gobiernos y empresas estatales deben dar prioridad a las empresas nacionales."
+  },
+  {
+    "id": "comercio_14",
+    "text": "El comercio internacional debe ampliarse para apoyar el desarrollo económico."
+  },
+  {
+    "id": "comercio_15",
+    "text": "Los coches eléctricos chinos baratos deben pagar tarifas para proteger las fábricas locales."
+  },
+  {
+    "id": "comercio_16",
+    "text": "Mi país debería reducir los aranceles de importación que elevan los precios de los consumidores."
+  },
+  {
+    "id": "comercio_17",
+    "text": "Las cadenas de suministro estratégicas, como los medicamentos y los chips, deben protegerse de la competencia extranjera."
+  },
+  {
+    "id": "comercio_18",
+    "text": "Las empresas multinacionales son beneficiosas porque crean empleos y capacitan a los trabajadores locales."
+  },
+  {
+    "id": "comercio_19",
+    "text": "La soberanía económica vale más que precios bajos en el supermercado."
+  },
+  {
+    "id": "comercio_20",
+    "text": "La integración económica mundial debe profundizarse mediante un mayor comercio."
+  },
+  {
+    "id": "religiao_01",
+    "text": "La religión es un asunto personal y no debe influir en la política pública."
+  },
+  {
+    "id": "religiao_02",
+    "text": "La fe debe ser la guía de mis elecciones morales y políticas."
+  },
+  {
+    "id": "religiao_03",
+    "text": "Las leyes deben ser neutrales y no seguir los valores de ninguna religión."
+  },
+  {
+    "id": "religiao_04",
+    "text": "Las leyes del país deben reflejar los valores de la religión mayoritaria."
+  },
+  {
+    "id": "religiao_05",
+    "text": "Iglesias y templos deben pagar impuestos como cualquier otra organización."
+  },
+  {
+    "id": "religiao_06",
+    "text": "La religión fortalece la vida comunitaria y debe alentarse."
+  },
+  {
+    "id": "religiao_07",
+    "text": "Los edificios públicos, como escuelas y tribunales, no deben mostrar símbolos religiosos."
+  },
+  {
+    "id": "religiao_08",
+    "text": "Mi país debería adoptar oficialmente una identidad religiosa."
+  },
+  {
+    "id": "religiao_09",
+    "text": "Las decisiones políticas no deben basarse en creencias religiosas."
+  },
+  {
+    "id": "religiao_10",
+    "text": "Las tradiciones religiosas deben transmitirse a las generaciones futuras."
+  },
+  {
+    "id": "religiao_11",
+    "text": "Una sociedad sin religión sería preferible a una sociedad religiosa."
+  },
+  {
+    "id": "religiao_12",
+    "text": "La sociedad debe dar más espacio a la fe en Dios."
+  },
+  {
+    "id": "religiao_13",
+    "text": "Las fiestas religiosas no deben ser oficiales en un estado secular."
+  },
+  {
+    "id": "religiao_14",
+    "text": "El matrimonio debe reconocerse como institución religiosa."
+  },
+  {
+    "id": "religiao_15",
+    "text": "La palabra 'Dios' no debe aparecer en la constitución o en discursos políticos."
+  },
+  {
+    "id": "religiao_16",
+    "text": "La fe religiosa es necesaria para dar sentido a la vida."
+  },
+  {
+    "id": "religiao_17",
+    "text": "La religión no debe formar parte de la educación de los niños pequeños."
+  },
+  {
+    "id": "religiao_18",
+    "text": "Cuando la ley de los hombres contradice la ley de Dios, la ley de Dios viene primero."
+  },
+  {
+    "id": "religiao_19",
+    "text": "La moralidad pública no necesita basarse en la creencia en Dios."
+  },
+  {
+    "id": "religiao_20",
+    "text": "La fe religiosa es parte de la identidad nacional y merece protección."
+  },
+  {
+    "id": "moral_01",
+    "text": "Las parejas del mismo sexo deben tener el mismo derecho a adoptar niños que otras parejas."
+  },
+  {
+    "id": "moral_02",
+    "text": "La familia tradicional debe servir de modelo para la sociedad."
+  },
+  {
+    "id": "moral_03",
+    "text": "Debe respetarse la identidad de género declarada por cada persona."
+  },
+  {
+    "id": "moral_04",
+    "text": "Los cambios culturales que llegan demasiado rápido terminan desestabilizando toda la sociedad."
+  },
+  {
+    "id": "moral_05",
+    "text": "Todavía se necesitan cuotas basadas en la raza para hacer frente a la desigualdad."
+  },
+  {
+    "id": "moral_06",
+    "text": "El matrimonio real es entre un hombre y una mujer."
+  },
+  {
+    "id": "moral_07",
+    "text": "Las parejas LGBT deben poder mostrar afecto en público como cualquier otra pareja."
+  },
+  {
+    "id": "moral_08",
+    "text": "Deberían terminarse las cuotas basadas en la raza para evitar divisiones en línea racial."
+  },
+  {
+    "id": "moral_09",
+    "text": "El aborto temprano en el embarazo puede ser una opción moralmente aceptable."
+  },
+  {
+    "id": "moral_10",
+    "text": "El aborto es incorrecto porque termina una vida humana."
+  },
+  {
+    "id": "moral_11",
+    "text": "Los adolescentes deben aprender sobre sexualidad y género sin tabúes."
+  },
+  {
+    "id": "moral_12",
+    "text": "La educación sexual de los niños debe seguir los valores de la familia, no de la escuela."
+  },
+  {
+    "id": "moral_13",
+    "text": "El trabajo sexual debe reconocerse como trabajo legítimo."
+  },
+  {
+    "id": "moral_14",
+    "text": "La sociedad no debe adoptar un idioma neutro en materia de género."
+  },
+  {
+    "id": "moral_15",
+    "text": "Reducir el consumo de carne por respeto a los animales es un avance moral."
+  },
+  {
+    "id": "moral_16",
+    "text": "Usar pornografía o drogas es un signo de declive moral."
+  },
+  {
+    "id": "moral_17",
+    "text": "Las relaciones abiertas y el poliamor son opciones tan legítimas como el matrimonio tradicional."
+  },
+  {
+    "id": "moral_18",
+    "text": "El papel más importante de una mujer es cuidar a la familia y al hogar."
+  },
+  {
+    "id": "moral_19",
+    "text": "La locura en películas, arte y playas no debe considerarse ofensiva."
+  },
+  {
+    "id": "moral_20",
+    "text": "Los padres deben ser la autoridad final en la educación moral de sus hijos."
+  },
+  {
+    "id": "tecnologia_01",
+    "text": "La energía nuclear, la IA y la ingeniería genética deben ser abrazadas sin temor excesivo."
+  },
+  {
+    "id": "tecnologia_02",
+    "text": "La humanidad viviría mejor con menos tecnología, en una forma de vida más simple y natural."
+  },
+  {
+    "id": "tecnologia_03",
+    "text": "AI y automatización son bienvenidos, incluso si eliminan muchas de las profesiones actuales."
+  },
+  {
+    "id": "tecnologia_04",
+    "text": "Deben restringirse tecnologías que alteren el cuerpo humano, la mente o la reproducción."
+  },
+  {
+    "id": "tecnologia_05",
+    "text": "Los cultivos genéticamente modificados deben seguir siendo desarrollados."
+  },
+  {
+    "id": "tecnologia_06",
+    "text": "El uso de plaguicidas debe reducirse, incluso si disminuye la productividad agrícola."
+  },
+  {
+    "id": "tecnologia_07",
+    "text": "Se debe permitir la minería incluso en áreas de bosque preservado en el Amazonas."
+  },
+  {
+    "id": "tecnologia_08",
+    "text": "La naturaleza conservada vale más que el crecimiento industrial acelerado."
+  },
+  {
+    "id": "tecnologia_09",
+    "text": "Se debe permitir la edición de genes para aumentar la inteligencia y prevenir enfermedades."
+  },
+  {
+    "id": "tecnologia_10",
+    "text": "La reducción del uso de los recursos naturales debe tener prioridad en la lucha contra el calentamiento global."
+  },
+  {
+    "id": "tecnologia_11",
+    "text": "La humanidad debe invertir en explorar otros planetas."
+  },
+  {
+    "id": "tecnologia_12",
+    "text": "Incluso la minería de bajo impacto en la selva amazónica cruza una línea que no debe cruzarse."
+  },
+  {
+    "id": "tecnologia_13",
+    "text": "La vida en las grandes ciudades es preferible a la vida en el campo."
+  },
+  {
+    "id": "tecnologia_14",
+    "text": "Editar embriones para elegir inteligencia o apariencia cruza una línea ética."
+  },
+  {
+    "id": "tecnologia_15",
+    "text": "Los implantes cerebrales son una manera legítima de expandir las habilidades humanas."
+  },
+  {
+    "id": "tecnologia_16",
+    "text": "El gasto en exploración espacial debe tener menor prioridad que la protección ambiental en la Tierra."
+  },
+  {
+    "id": "tecnologia_17",
+    "text": "La carne cultivada en laboratorio debe sustituir a alguna ganadería."
+  },
+  {
+    "id": "tecnologia_18",
+    "text": "Una vida sencilla en el campo es preferible a la vida en grandes ciudades."
+  },
+  {
+    "id": "tecnologia_19",
+    "text": "Contra el calentamiento global, confiar en la tecnología tiene más sentido que reducir el consumo."
+  },
+  {
+    "id": "tecnologia_20",
+    "text": "El cuerpo humano no debe mejorarse con chips y modificaciones artificiales."
+  }
+]

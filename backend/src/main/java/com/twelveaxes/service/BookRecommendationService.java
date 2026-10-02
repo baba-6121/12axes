@@ -20,6 +20,7 @@ public class BookRecommendationService {
     static final String AMAZON_BR_TAG = "12axes-20";
     static final String AMAZON_US_HOST = "www.amazon.com";
     static final String AMAZON_US_TAG = "12axes0d-20";
+    static final String AMAZON_ES_HOST = "www.amazon.es";
 
     private final QuizDataService dataService;
 
@@ -67,10 +68,12 @@ public class BookRecommendationService {
         if (directUrl != null && !directUrl.isBlank()) {
             return directUrl;
         }
+        boolean spanish = QuizDataService.LANG_ES.equals(lang);
         boolean english = QuizDataService.LANG_EN.equals(lang);
         String query = URLEncoder.encode(title + " " + author, StandardCharsets.UTF_8);
-        return "https://" + (english ? AMAZON_US_HOST : AMAZON_BR_HOST)
-                + "/s?k=" + query + "&i=stripbooks&tag=" + (english ? AMAZON_US_TAG : AMAZON_BR_TAG);
+        String host = spanish ? AMAZON_ES_HOST : english ? AMAZON_US_HOST : AMAZON_BR_HOST;
+        String tag = english ? AMAZON_US_TAG : AMAZON_BR_TAG;
+        return "https://" + host + "/s?k=" + query + "&i=stripbooks&tag=" + tag;
     }
 
     private static String localized(Map<String, String> values, String lang) {

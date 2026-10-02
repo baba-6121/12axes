@@ -145,17 +145,20 @@ public class IdeologyMatcherService {
     }
 
     private String longDescription(String rawDescription, String lang) {
-        boolean en = QuizDataService.LANG_EN.equals(lang);
         DescriptionParts parts = splitDescription(cleanDescription(rawDescription));
         StringBuilder description = new StringBuilder(parts.summary());
         if (!parts.summary().endsWith(".")) {
             description.append(".");
         }
-        description.append(en
-                ? " Compatibility indicates how close your answers are to this profile."
-                : " A compatibilidade indica proximidade entre suas respostas e esse perfil.");
+        boolean portuguese = QuizDataService.LANG_PT.equals(lang);
+        boolean spanish = QuizDataService.LANG_ES.equals(lang);
+        description.append(portuguese
+                ? " A compatibilidade indica proximidade entre suas respostas e esse perfil."
+                : spanish
+                ? " La compatibilidad indica qué tan cercanas están tus respuestas a este perfil."
+                : " Compatibility indicates how close your answers are to this profile.");
         if (!parts.isEmpty()) {
-            if (en) {
+            if (!portuguese && !spanish) {
                 description.append(" ")
                         .append("In practical terms: political values and form of government tend to ")
                         .append("be ")
@@ -163,6 +166,15 @@ public class IdeologyMatcherService {
                         .append("; the economy tends to be ")
                         .append(parts.economic())
                         .append("; social norms tend to be ")
+                        .append(parts.social())
+                        .append(".");
+            } else if (spanish) {
+                description.append(" ")
+                        .append("En términos prácticos: los valores políticos y la forma de gobierno tienden a ser ")
+                        .append(parts.political())
+                        .append("; la economía tiende a ser ")
+                        .append(parts.economic())
+                        .append("; las normas sociales tienden a ser ")
                         .append(parts.social())
                         .append(".");
             } else {

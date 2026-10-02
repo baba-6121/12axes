@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Pergunta de arquétipo exibida ao fim do quiz. Cada alternativa pontua em
  * mais de um eixo: {@code effects} guarda o leftPercent (0–100) que ela soma a
- * cada eixo, com o mesmo peso de uma pergunta comum. Textos em PT e EN no
+ * cada eixo, com o mesmo peso de uma pergunta comum. Textos em PT, EN e ES no
  * mesmo arquivo ({@code data/archetype-questions.json}).
  */
 public record ArchetypeQuestion(
@@ -32,6 +32,6 @@ public record ArchetypeQuestion(
     }
 
     private static String localized(Map<String, String> values, String lang) {
-        return values.getOrDefault(lang, values.get("pt"));
+        return values.getOrDefault(lang, values.getOrDefault("en", values.get("pt")));
     }
 }
